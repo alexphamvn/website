@@ -98,8 +98,8 @@ section.hero {
   overflow: visible;
 }
 .iso-frame line {
-  stroke: #000;
-  stroke-width: 4;
+  stroke: #b4b4b4;
+  stroke-width: 9;
   stroke-linecap: square;
   fill: none;
 }
@@ -135,15 +135,9 @@ section.hero {
 .hero-photo {
   width: 280px;
   height: 340px;
-  background: linear-gradient(135deg, #6a6d72, #2a2d32);
   border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-muted);
-  font-size: 0.75rem;
-  text-align: center;
-  padding: 1rem;
+  object-fit: cover;
+  display: block;
 }
 .hero-bio {
   font-size: 1.05rem;
