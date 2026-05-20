@@ -99,7 +99,7 @@ section.hero {
 }
 .iso-frame line {
   stroke: #b4b4b4;
-  stroke-width: 9;
+  stroke-width: 6;
   stroke-linecap: square;
   fill: none;
 }
