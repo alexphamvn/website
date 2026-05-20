@@ -275,16 +275,35 @@ section.content.dark  { background: var(--bg-dark);  color: var(--text-light); }
   margin-bottom: 1.5rem;
   opacity: 0.4;
 }
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2.5rem;
+
+/* ===== Carousel ===== */
+.testimonial-carousel {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.testimonial-viewport {
+  overflow: hidden;
+  flex: 1;
+}
+.testimonial-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  will-change: transform;
+}
+.testimonial-track .testimonial {
+  flex: 0 0 100%;
+  padding: 1rem 2rem;
 }
 .testimonial p {
-  font-size: 0.95rem;
-  line-height: 1.55;
+  font-size: 1.05rem;
+  line-height: 1.6;
   text-align: center;
   margin-bottom: 1.5rem;
+  min-height: 5rem;
 }
 .testimonial-source {
   text-align: center;
@@ -292,6 +311,50 @@ section.content.dark  { background: var(--bg-dark);  color: var(--text-light); }
   line-height: 1.4;
 }
 .testimonial-source strong { display: block; margin-top: 0.4rem; }
+
+.carousel-arrow {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: var(--text-light);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0 0 4px 0;
+  transition: background 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+}
+.carousel-arrow:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.6);
+}
+
+.testimonial-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 2rem;
+}
+.testimonial-dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+.testimonial-dots .dot:hover { background: rgba(255,255,255,0.5); }
+.testimonial-dots .dot.active {
+  background: var(--text-light);
+  transform: scale(1.2);
+}
 
 /* ============================================================
    INDUSTRY / EXPERIENCE SECTION
@@ -428,4 +491,7 @@ footer a {
   .testimonials { margin: 3rem -1.5rem -2rem; padding: 3rem 1.5rem; }
   .iso-name-block { padding: 1.5rem 1.5rem 2rem 2.5rem; }
   .iso-name-text h1 { font-size: 1.8rem; }
+  .testimonial-carousel { gap: 0.3rem; }
+  .testimonial-track .testimonial { padding: 0.5rem 0.5rem; }
+  .carousel-arrow { width: 36px; height: 36px; font-size: 1.4rem; }
 }
