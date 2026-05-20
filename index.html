@@ -38,9 +38,33 @@
      [EDIT: HERO / ABOUT]
      ============================================================ -->
 <section class="hero">
-  <div class="hero-name-block">
-    <h1>Your Name</h1>
-    <div class="subtitle">PhD Student · Your University</div>
+  <!-- ============================================================
+       [EDIT: NAME BOX] — Isometric open-bracket frame
+       Change "Your Name" and the subtitle below.
+       The SVG draws the 3D bracket shape — you usually don't
+       need to touch it.
+       ============================================================ -->
+  <div class="iso-name-block">
+    <svg class="iso-frame" viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- Top face (the slanted line going from top-front corner back) -->
+      <line x1="20" y1="40" x2="60" y2="10" />
+      <!-- Front-left vertical edge -->
+      <line x1="20" y1="40" x2="20" y2="150" />
+      <!-- Back-left vertical edge -->
+      <line x1="60" y1="10" x2="60" y2="120" />
+      <!-- Connection: front-bottom corner to back-bottom corner -->
+      <line x1="20" y1="150" x2="60" y2="120" />
+      <!-- Bottom face: front edge going right -->
+      <line x1="20" y1="150" x2="480" y2="150" />
+      <!-- Bottom face: back edge going right -->
+      <line x1="60" y1="120" x2="500" y2="120" />
+      <!-- Bottom face: right-side connection -->
+      <line x1="480" y1="150" x2="500" y2="120" />
+    </svg>
+    <div class="iso-name-text">
+      <h1>Your Name</h1>
+      <div class="subtitle">PhD Student · Your University</div>
+    </div>
   </div>
 
   <div class="hero-content">
