@@ -1,0 +1,432 @@
+/* ============================================================
+   SHARED STYLESHEET — used by every page
+   ============================================================
+   To change colors or fonts site-wide, edit the variables in
+   the :root block below.
+   ============================================================ */
+
+:root {
+  --bg-light: #e9ebee;
+  --bg-dark: #1a1d22;
+  --bg-mid: #4a4d52;
+  --text-dark: #1a1d22;
+  --text-light: #f5f6f8;
+  --text-muted: #8a8d92;
+  --accent: #2d2a8c;     /* deep indigo for stat boxes */
+  --accent-hot: #ff6b35; /* highlight for box-office / awards */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "DM Sans", -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-dark);
+  background: var(--bg-light);
+  line-height: 1.5;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ============================================================
+   TOP NAVIGATION BAR — appears on every page
+   ============================================================ */
+nav.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+  padding: 1.2rem 3rem;
+  background: var(--bg-mid);
+  color: var(--text-light);
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+nav.topnav a {
+  opacity: 0.85;
+  transition: opacity 0.2s;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+}
+nav.topnav a:hover {
+  opacity: 1;
+  border-bottom-color: var(--text-light);
+}
+nav.topnav a.active {
+  opacity: 1;
+  border-bottom-color: var(--text-light);
+}
+
+/* ============================================================
+   HERO / ABOUT SECTION (used on index.html)
+   ============================================================ */
+section.hero {
+  background: var(--bg-mid);
+  color: var(--text-light);
+  padding: 3rem 3rem 6rem;
+  position: relative;
+  overflow: hidden;
+}
+section.hero::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  right: -5%;
+  width: 350px;
+  height: 350px;
+  background:
+    radial-gradient(circle at 30% 30%, #fff 0 2px, transparent 3px) 0 0/14px 14px,
+    #c8cad0;
+  border-radius: 50%;
+  opacity: 0.85;
+  clip-path: polygon(0 30%, 100% 0, 100% 70%, 30% 100%);
+}
+section.hero::after {
+  content: "";
+  position: absolute;
+  top: 35%;
+  right: 8%;
+  width: 180px;
+  height: 180px;
+  background:
+    radial-gradient(circle at 50% 50%, #fff 0 2px, transparent 3px) 0 0/12px 12px,
+    #d4d6dc;
+  border-radius: 50% 20% 40% 50%;
+  opacity: 0.9;
+}
+
+.hero-name-block {
+  display: inline-block;
+  background: var(--bg-dark);
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+}
+.hero-name-block h1 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 2.4rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.hero-name-block .subtitle {
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-top: 0.3rem;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 2.5rem;
+  max-width: 900px;
+  align-items: start;
+}
+.hero-photo {
+  width: 200px;
+  height: 240px;
+  background: linear-gradient(135deg, #6a6d72, #2a2d32);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-align: center;
+  padding: 1rem;
+}
+.hero-bio {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  padding-top: 0.5rem;
+}
+.hero-bio p { margin-bottom: 1rem; }
+
+.section-jump {
+  text-align: center;
+  margin-top: 4rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+.section-jump span { display: block; margin-top: 0.3rem; font-size: 1.2rem; }
+
+/* ============================================================
+   SHARED SECTION STYLES
+   ============================================================ */
+section.content { padding: 4rem 3rem; }
+section.content.light { background: var(--bg-light); color: var(--text-dark); }
+section.content.dark  { background: var(--bg-dark);  color: var(--text-light); }
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 3rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 2.5rem;
+  line-height: 1;
+}
+.section-subtitle {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin: 2rem 0 1.5rem;
+}
+
+/* ============================================================
+   RESEARCH / PUBLICATIONS LIST
+   ============================================================ */
+.pub-list { max-width: 1000px; }
+.pub {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  gap: 1rem;
+  margin-bottom: 2.2rem;
+}
+.pub-num {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  padding-top: 0.15rem;
+}
+.pub-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+  line-height: 1.35;
+}
+.pub-authors { font-size: 0.95rem; margin-bottom: 0.3rem; }
+.pub-authors strong { font-weight: 700; }
+.pub-status {
+  font-style: italic;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+.footnote {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 2rem;
+  font-style: italic;
+}
+
+/* ============================================================
+   TEACHING SECTION
+   ============================================================ */
+.teaching-row {
+  display: grid;
+  grid-template-columns: 120px 1fr 200px;
+  gap: 2rem;
+  align-items: center;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.teaching-row:last-of-type { border-bottom: none; }
+.teaching-date {
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+}
+.teaching-date .year { font-size: 1.4rem; display: block; }
+.course-title {
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-bottom: 0.3rem;
+}
+.course-meta {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+.rating-box {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.rating {
+  background: var(--accent);
+  color: var(--text-light);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 2rem;
+  padding: 0.4rem 0.9rem;
+  line-height: 1;
+}
+.rating-meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+.testimonials {
+  background: var(--bg-dark);
+  color: var(--text-light);
+  padding: 4rem 3rem;
+  margin: 4rem -3rem -4rem;
+}
+.quote-mark {
+  font-family: var(--font-display);
+  font-size: 6rem;
+  line-height: 0.5;
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+  opacity: 0.4;
+}
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2.5rem;
+}
+.testimonial p {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.testimonial-source {
+  text-align: center;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+.testimonial-source strong { display: block; margin-top: 0.4rem; }
+
+/* ============================================================
+   INDUSTRY / EXPERIENCE SECTION
+   ============================================================ */
+.industry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2.5rem;
+  max-width: 1100px;
+}
+.industry-card .placeholder-poster {
+  width: 100%;
+  aspect-ratio: 2/3;
+  background: linear-gradient(135deg, #2a2d32, #4a4d52);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+.industry-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.industry-card .location {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.8rem;
+}
+.stat-large {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.5rem;
+  line-height: 1.1;
+  margin: 0.5rem 0;
+}
+.stat-tag {
+  color: var(--accent-hot);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.small-label {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin: 3rem 0 1.5rem;
+  opacity: 0.7;
+}
+
+/* ============================================================
+   CV PAGE
+   ============================================================ */
+.cv-embed {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.cv-embed object {
+  width: 100%;
+  height: 80vh;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.cv-fallback {
+  padding: 2rem;
+  background: #fff;
+  text-align: center;
+}
+.cv-fallback a { text-decoration: underline; }
+
+/* ============================================================
+   CONTACT / FOOTER
+   ============================================================ */
+footer {
+  background: var(--bg-mid);
+  color: var(--text-light);
+  text-align: center;
+  padding: 3rem 2rem;
+}
+footer h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin-bottom: 0.6rem;
+}
+footer p { font-size: 0.9rem; line-height: 1.6; opacity: 0.85; }
+footer a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Page-content version of contact (the standalone contact page) */
+.contact-card {
+  max-width: 600px;
+  margin: 2rem auto;
+  background: var(--bg-dark);
+  color: var(--text-light);
+  padding: 3rem;
+  border-radius: 4px;
+  text-align: center;
+}
+.contact-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.contact-card p { font-size: 1rem; line-height: 1.7; }
+.contact-card a {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.7rem 1.4rem;
+  background: var(--accent);
+  border-radius: 2px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 720px) {
+  nav.topnav { padding: 1rem; gap: 1rem; font-size: 0.8rem; flex-wrap: wrap; }
+  section.hero, section.content { padding: 2rem 1.5rem; }
+  .hero-content { grid-template-columns: 1fr; }
+  .hero-photo { width: 140px; height: 170px; }
+  .section-title { font-size: 2rem; }
+  .teaching-row { grid-template-columns: 1fr; gap: 0.5rem; }
+  .testimonials { margin: 3rem -1.5rem -2rem; padding: 3rem 1.5rem; }
+  section.hero::before, section.hero::after { display: none; }
+}
