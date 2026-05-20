@@ -72,38 +72,11 @@ section.hero {
   position: relative;
   overflow: hidden;
 }
-section.hero::before {
-  content: "";
-  position: absolute;
-  top: 10%;
-  right: -5%;
-  width: 350px;
-  height: 350px;
-  background:
-    radial-gradient(circle at 30% 30%, #fff 0 2px, transparent 3px) 0 0/14px 14px,
-    #c8cad0;
-  border-radius: 50%;
-  opacity: 0.85;
-  clip-path: polygon(0 30%, 100% 0, 100% 70%, 30% 100%);
-}
-section.hero::after {
-  content: "";
-  position: absolute;
-  top: 35%;
-  right: 8%;
-  width: 180px;
-  height: 180px;
-  background:
-    radial-gradient(circle at 50% 50%, #fff 0 2px, transparent 3px) 0 0/12px 12px,
-    #d4d6dc;
-  border-radius: 50% 20% 40% 50%;
-  opacity: 0.9;
-}
 
 /* ============================================================
    ISOMETRIC NAME BLOCK — the open 3D bracket framing the name
    ============================================================
-   To resize: change max-width below.
+   To resize: change max-width and min-height below.
    To change line thickness: edit stroke-width in .iso-frame line
    To change line color: edit stroke color in .iso-frame line
    ============================================================ */
@@ -112,8 +85,12 @@ section.hero::after {
   display: block;
   width: 100%;
   max-width: 560px;
+  min-height: 200px;
   margin-bottom: 2.5rem;
-  padding: 2rem 3rem 2.5rem 4rem;
+  padding: 3rem 4rem 3rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .iso-frame {
   position: absolute;
@@ -132,6 +109,7 @@ section.hero::after {
 .iso-name-text {
   position: relative;
   z-index: 1;
+  text-align: center;
 }
 .iso-name-text h1 {
   font-family: var(--font-display);
@@ -146,7 +124,7 @@ section.hero::after {
   letter-spacing: 0.15em;
   text-transform: uppercase;
   opacity: 0.7;
-  margin-top: 0.5rem;
+  margin-top: 0.7rem;
   color: var(--text-light);
 }
 
@@ -457,7 +435,6 @@ footer a {
   .section-title { font-size: 2rem; }
   .teaching-row { grid-template-columns: 1fr; gap: 0.5rem; }
   .testimonials { margin: 3rem -1.5rem -2rem; padding: 3rem 1.5rem; }
-  section.hero::before, section.hero::after { display: none; }
   .iso-name-block { padding: 1.5rem 1.5rem 2rem 2.5rem; }
   .iso-name-text h1 { font-size: 1.8rem; }
 }

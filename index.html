@@ -46,20 +46,31 @@
        ============================================================ -->
   <div class="iso-name-block">
     <svg class="iso-frame" viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <!-- Top face (the slanted line going from top-front corner back) -->
-      <line x1="20" y1="40" x2="60" y2="10" />
+      <!-- ===== TOP FACE ===== -->
+      <!-- Front-top edge going right -->
+      <line x1="20" y1="30" x2="480" y2="30" />
+      <!-- Back-top edge going right -->
+      <line x1="60" y1="5" x2="500" y2="5" />
+      <!-- Top-left connection (front-top to back-top) -->
+      <line x1="20" y1="30" x2="60" y2="5" />
+      <!-- Top-right connection (front-top to back-top) -->
+      <line x1="480" y1="30" x2="500" y2="5" />
+
+      <!-- ===== LEFT SIDE (front + back verticals + diagonal) ===== -->
       <!-- Front-left vertical edge -->
-      <line x1="20" y1="40" x2="20" y2="150" />
+      <line x1="20" y1="30" x2="20" y2="150" />
       <!-- Back-left vertical edge -->
-      <line x1="60" y1="10" x2="60" y2="120" />
-      <!-- Connection: front-bottom corner to back-bottom corner -->
-      <line x1="20" y1="150" x2="60" y2="120" />
-      <!-- Bottom face: front edge going right -->
+      <line x1="60" y1="5" x2="60" y2="125" />
+
+      <!-- ===== BOTTOM FACE ===== -->
+      <!-- Bottom-left connection (front-bottom to back-bottom) -->
+      <line x1="20" y1="150" x2="60" y2="125" />
+      <!-- Front-bottom edge going right -->
       <line x1="20" y1="150" x2="480" y2="150" />
-      <!-- Bottom face: back edge going right -->
-      <line x1="60" y1="120" x2="500" y2="120" />
-      <!-- Bottom face: right-side connection -->
-      <line x1="480" y1="150" x2="500" y2="120" />
+      <!-- Back-bottom edge going right -->
+      <line x1="60" y1="125" x2="500" y2="125" />
+      <!-- Bottom-right connection (front-bottom to back-bottom) -->
+      <line x1="480" y1="150" x2="500" y2="125" />
     </svg>
     <div class="iso-name-text">
       <h1>Your Name</h1>
