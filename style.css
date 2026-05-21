@@ -272,18 +272,12 @@ section.content.dark  { background: var(--bg-dark);  color: var(--text-light); }
 .activities-title {
   margin-top: 4rem;
   margin-bottom: 1.5rem;
-  max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
 }
 .activities-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   margin-bottom: 1rem;
-  max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
 }
 .activity-card {
   position: relative;
