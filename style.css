@@ -117,6 +117,7 @@ section.hero {
   color: var(--text-light);
 }
 .iso-name-text .subtitle {
+  white-space: nowrap;
   font-size: 0.75rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
