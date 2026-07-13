@@ -79,7 +79,10 @@ section.hero {
 section.hero-sky {
   position: relative;
   overflow: hidden;
-  padding: 4.5rem 3rem;
+  display: flex;
+  align-items: flex-end;          /* figure sits at the bottom … */
+  min-height: 320px;              /* … of a fixed-height banner  */
+  padding: 3rem 3rem 9pt;         /* ← 9pt gap to the bottom edge */
   color: var(--text-light);
   background: #000;
 }
@@ -105,7 +108,6 @@ section.hero-sky {
   width: 100%;
   max-width: 560px;
   min-height: 150px;
-  transform: translateY(20rem);      /* push the whole figure down */
   margin-bottom: 0;
   padding: 2rem 1.5rem 2rem 8.5rem;  /* larger left padding keeps text inside the box */
 }
