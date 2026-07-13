@@ -363,34 +363,28 @@ section.content.dark  { background: var(--bg-dark);  color: var(--text-light); }
   font-weight: 900;
   line-height: 1.1;
   text-align: center;
-  max-width: 230px;
+  /* Replaced max-width: 230px with white-space: nowrap to keep text on one line */
+  white-space: nowrap; 
   cursor: default;
   transition: opacity 0.25s ease;
   opacity: 0.95;
 }
-.method:hover { opacity: 1; }
-.method.rank-1 { font-size: 2.2rem; }
-.method.rank-2 { font-size: 1.6rem; }
-.method.rank-3 { font-size: 1.35rem; font-weight: 700; }
-.method.rank-4 { font-size: 1.1rem;  font-weight: 700; }
-.method.rank-5 { font-size: 0.9rem;  font-weight: 500; }
-/* placement: 1st word = center, the rest ring around it */
-.method:nth-child(1)  { left: 50%; top: 50%; }  /* center (biggest)   */
-.method:nth-child(2)  { left: 50%; top: 13%; }  /* top center         */
-.method:nth-child(3)  { left: 50%; top: 87%; }  /* bottom center      */
-.method:nth-child(4)  { left: 20%; top: 32%; }  /* upper left         */
-.method:nth-child(5)  { left: 79%; top: 31%; }  /* upper right        */
-.method:nth-child(6)  { left: 21%; top: 68%; }  /* lower left         */
-.method:nth-child(7)  { left: 79%; top: 69%; }  /* lower right        */
-.method:nth-child(8)  { left: 26%; top: 3%;  }  /* top-left corner    */
-.method:nth-child(9)  { left: 74%; top: 97%; }  /* bottom-right corner*/
-.method:nth-child(10) { left: 26%; top: 97%; }  /* bottom-left corner */
-.method:nth-child(11) { left: 76%; top: 3%;  }  /* top-right corner   */
-.method:nth-child(12) { left: 8%;  top: 50%; }  /* mid left           */
-.method:nth-child(13) { left: 92%; top: 50%; }  /* mid right (spare)  */
-.method:nth-child(14) { left: 50%; top: 100%;}  /* below (spare)      */
-/* rotating palette — different shades of gray
-   (works for any number of methods) */
+
+/* Updated placement to match the desired layout */
+.method:nth-child(1)  { left: 45%; top: 45%; }  /* Polynomial Regression */
+.method:nth-child(2)  { left: 63%; top: 28%; }  /* Text Embeddings */
+.method:nth-child(3)  { left: 43%; top: 72%; }  /* Hierarchical Linear Modeling */
+.method:nth-child(4)  { left: 14%; top: 58%; }  /* Simulation */
+.method:nth-child(5)  { left: 42%; top: 8%;  }  /* Structural Equation Modeling */
+.method:nth-child(6)  { left: 22%; top: 32%; }  /* Grounded Theory */
+.method:nth-child(7)  { left: 55%; top: 58%; }  /* Computational Modeling */
+.method:nth-child(8)  { left: 22%; top: 20%; }  /* Fixed-effect Regression */
+.method:nth-child(9)  { left: 73%; top: 85%; }  /* Ordinary Least Squares */
+.method:nth-child(10) { left: 28%; top: 85%; }  /* Confirmatory Factor Analysis */
+.method:nth-child(11) { left: 62%; top: 18%; }  /* Exploratory Factor Analysis */
+.method:nth-child(12) { left: 8%;  top: 48%; }  /* t-test */
+
+/* Force black color to match the reference image, overriding the previous 6n+x rules */
 .method:nth-child(6n + 1) { color: #f5f6f8; } /* near white   */
 .method:nth-child(6n + 2) { color: #9a9ea6; } /* medium gray  */
 .method:nth-child(6n + 3) { color: #d2d5da; } /* light gray   */
