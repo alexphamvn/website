@@ -42,7 +42,7 @@ nav.topnav {
   justify-content: flex-end;
   gap: 2rem;
   padding: 1.2rem 3rem;
-  background: var(--bg-mid);
+  background: #000;
   color: var(--text-light);
   font-size: 0.9rem;
   letter-spacing: 0.02em;
@@ -105,8 +105,9 @@ section.hero-sky {
   width: 100%;
   max-width: 560px;
   min-height: 150px;
+  margin-top: 2.5rem;      /* push the whole figure down */
   margin-bottom: 0;
-  padding: 1.5rem 1.5rem 2rem 6rem;
+  padding: 2rem 1.5rem 2rem 8.5rem;  /* larger left padding keeps text inside the box */
 }
 .iso-frame {
   position: absolute;
@@ -712,7 +713,7 @@ section.content.dark  { background: var(--bg-dark);  color: var(--text-light); }
    CONTACT / FOOTER
    ============================================================ */
 footer {
-  background: var(--bg-mid);
+  background: #000;
   color: var(--text-light);
   text-align: center;
   padding: 3rem 2rem;
