@@ -348,6 +348,51 @@ section.content.dark  { background: var(--bg-dark);  color: var(--text-light); }
 }
 
 /* ============================================================
+   RESEARCH INTRO — summary of works + method cloud
+   ============================================================ */
+.summary-works {
+  max-width: 1000px;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+.summary-works p { margin-bottom: 1rem; }
+
+/* Method cloud — sized by rank like a topic model.
+   rank-1 = biggest … rank-5 = smallest.
+   Colors rotate automatically via nth-child, so new methods
+   appended at the end pick up a color on their own. */
+.method-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.8rem 2.2rem;
+  max-width: 1000px;
+  margin-top: 1rem;
+}
+.method {
+  font-family: var(--font-display);
+  font-weight: 900;
+  line-height: 1.15;
+  cursor: default;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  opacity: 0.95;
+}
+.method:hover { transform: translateY(-3px); opacity: 1; }
+.method.rank-1 { font-size: 3rem; }
+.method.rank-2 { font-size: 2.4rem; }
+.method.rank-3 { font-size: 1.9rem; font-weight: 700; }
+.method.rank-4 { font-size: 1.5rem; font-weight: 700; }
+.method.rank-5 { font-size: 1.15rem; font-weight: 500; }
+/* rotating palette — different shades of gray
+   (works for any number of methods) */
+.method:nth-child(6n + 1) { color: #f5f6f8; } /* near white   */
+.method:nth-child(6n + 2) { color: #9a9ea6; } /* medium gray  */
+.method:nth-child(6n + 3) { color: #d2d5da; } /* light gray   */
+.method:nth-child(6n + 4) { color: #7c8088; } /* slate gray   */
+.method:nth-child(6n + 5) { color: #b8bbc1; } /* silver       */
+.method:nth-child(6n + 6) { color: #8a8d92; } /* muted gray   */
+
+/* ============================================================
    RESEARCH / PUBLICATIONS LIST
    ============================================================ */
 .pub-list { max-width: 1000px; }
