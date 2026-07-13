@@ -131,7 +131,7 @@ section.hero-sky {
 .iso-name-text h1 {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: 2rem;
+  font-size: 3rem;
   line-height: 1;
   letter-spacing: -0.02em;
   color: var(--text-light);
@@ -139,7 +139,7 @@ section.hero-sky {
 }
 .iso-name-text .subtitle {
   white-space: nowrap;           /* keep slogan on one line */
-  font-size: 1.15rem;            /* bigger slogan */
+  font-size: 2rem;            /* bigger slogan */
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.12em;
