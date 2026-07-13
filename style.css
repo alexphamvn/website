@@ -42,7 +42,7 @@ nav.topnav {
   justify-content: flex-end;
   gap: 2rem;
   padding: 1.2rem 3rem;
-  background: var(--bg-mid);
+  background: #000;
   color: var(--text-light);
   font-size: 0.9rem;
   letter-spacing: 0.02em;
@@ -66,7 +66,7 @@ nav.topnav a.active {
    HERO / ABOUT SECTION (used on index.html)
    ============================================================ */
 section.hero {
-  background: var(--bg-mid);
+  background: #000;
   color: var(--text-light);
   padding: 3rem 3rem 6rem;
   position: relative;
@@ -79,7 +79,7 @@ section.hero {
 section.hero-sky {
   position: relative;
   overflow: hidden;
-  padding: 4.5rem 3rem;
+  height: 320px;                  /* banner height — fixed */
   color: var(--text-light);
   background: #000;
 }
@@ -100,28 +100,12 @@ section.hero-sky {
    To change line color: edit stroke color in .iso-frame line
    ============================================================ */
 .iso-name-block {
-  position: relative;
-  display: block;
-  width: 100%;
-  max-width: 560px;
+  position: absolute;              /* pinned inside the banner       */
+  left: 3rem;                      /* ← distance from the left edge  */
+  bottom: 9pt;                     /* ← distance from the bottom edge */
+  width: min(560px, calc(100% - 6rem));
   min-height: 150px;
-  margin-bottom: 0;
-  padding: 1.5rem 1.5rem 2rem 6rem;
-}
-/* Squarespace-style wedge that sweeps in on hover */
-.iso-name-block::before {
-  content: "";
-  position: absolute;
-  inset: -0.5rem -1rem;
-  background: linear-gradient(105deg, var(--accent) 0%, #4b45c6 100%);
-  transform: skewX(-14deg) scaleX(0);
-  transform-origin: left center;
-  transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1);
-  z-index: 0;
-  pointer-events: none;
-}
-.iso-name-block:hover::before {
-  transform: skewX(-14deg) scaleX(1);
+  padding: 2rem 1.5rem 2rem 8.5rem;  /* larger left padding keeps text inside the box */
 }
 .iso-frame {
   position: absolute;
@@ -151,6 +135,7 @@ section.hero-sky {
   color: var(--text-light);
 }
 .iso-name-text .subtitle {
+  white-space: nowrap;           /* keep slogan on one line */
   font-size: 1.15rem;            /* bigger slogan */
   font-weight: 500;
   line-height: 1.5;
@@ -209,13 +194,10 @@ section.hero-sky {
 .rq-card {
   text-align: center;
   padding: 2rem 1.5rem;
-  border-radius: 8px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  transition: transform 0.3s ease;
 }
 .rq-card:hover {
   transform: translateY(-4px);
-  background: rgba(255, 255, 255, 0.06);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
 }
 .rq-question {
   font-family: var(--font-display);
@@ -366,39 +348,28 @@ section.content.dark  { background: var(--bg-dark);  color: var(--text-light); }
    word's order in the HTML (nth-child), so a new method appended
    at the end takes the next free spot — 10 spots pre-defined. */
 .method-cloud {
-  position: relative;
-  min-height: 340px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  column-gap: 1.1rem;
+  row-gap: 0.4rem;
 }
 .method {
-  position: absolute;
-  transform: translate(-50%, -50%);
+  white-space: nowrap;         /* each method stays on ONE line */
   font-family: var(--font-display);
   font-weight: 900;
-  line-height: 1.1;
-  text-align: center;
-  max-width: 230px;
+  line-height: 1.15;
   cursor: default;
   transition: opacity 0.25s ease;
   opacity: 0.95;
 }
 .method:hover { opacity: 1; }
-.method.rank-1 { font-size: 2.2rem; }
-.method.rank-2 { font-size: 1.6rem; }
-.method.rank-3 { font-size: 1.35rem; font-weight: 700; }
-.method.rank-4 { font-size: 1.1rem;  font-weight: 700; }
-.method.rank-5 { font-size: 0.9rem;  font-weight: 500; }
-/* placement: 1st word = center, the rest ring around it */
-.method:nth-child(1)  { left: 50%; top: 50%; }
-.method:nth-child(2)  { left: 50%; top: 15%; }
-.method:nth-child(3)  { left: 50%; top: 84%; }
-.method:nth-child(4)  { left: 13%; top: 33%; }
-.method:nth-child(5)  { left: 85%; top: 32%; }
-.method:nth-child(6)  { left: 82%; top: 68%; }
-.method:nth-child(7)  { left: 16%; top: 68%; }
-.method:nth-child(8)  { left: 20%; top: 2%;  }
-.method:nth-child(9)  { left: 82%; top: 4%;  }
-.method:nth-child(10) { left: 50%; top: 98%; }
-.method:nth-child(11) { left: 12%; top: 96%; }
+.method.rank-1 { font-size: 2.1rem; }
+.method.rank-2 { font-size: 1.55rem; }
+.method.rank-3 { font-size: 1.3rem;  font-weight: 700; }
+.method.rank-4 { font-size: 1rem;    font-weight: 700; }
+.method.rank-5 { font-size: 0.85rem; font-weight: 500; }
 /* rotating palette — different shades of gray
    (works for any number of methods) */
 .method:nth-child(6n + 1) { color: #f5f6f8; } /* near white   */
@@ -729,7 +700,7 @@ section.content.dark  { background: var(--bg-dark);  color: var(--text-light); }
    CONTACT / FOOTER
    ============================================================ */
 footer {
-  background: var(--bg-mid);
+  background: #000;
   color: var(--text-light);
   text-align: center;
   padding: 3rem 2rem;
@@ -779,19 +750,18 @@ footer a {
 @media (max-width: 720px) {
   nav.topnav { padding: 1rem; gap: 1rem; font-size: 0.8rem; flex-wrap: wrap; }
   section.hero, section.content { padding: 2rem 1.5rem; }
-  section.hero-sky { padding: 3rem 1.5rem; }
+  section.hero-sky { height: 260px; }
   .hero-content { grid-template-columns: 1fr; }
   .hero-photo { width: 140px; height: 170px; }
   .photo-titles { width: 100%; }
-  .iso-name-text .subtitle { font-size: 0.95rem; }
+  .iso-name-text .subtitle { font-size: 0.95rem; white-space: normal; }
   .rq-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   .intro-grid { grid-template-columns: 1fr; gap: 2rem; }
-  .method-cloud { min-height: 280px; }
   .section-title { font-size: 2rem; }
   .teaching-row { grid-template-columns: 1fr; gap: 0.5rem; }
   .activities-grid { grid-template-columns: 1fr; }
   .testimonials { margin: 3rem -1.5rem -2rem; padding: 3rem 1.5rem; }
-  .iso-name-block { padding: 1.5rem 1.5rem 2rem 2.5rem; }
+  .iso-name-block { left: 1.5rem; width: calc(100% - 3rem); padding: 1.5rem 1.5rem 2rem 2.5rem; }
   .iso-name-text h1 { font-size: 1.8rem; }
   .testimonial-carousel { gap: 0.3rem; }
   .testimonial-track .testimonial { padding: 0.5rem 0.5rem; }
