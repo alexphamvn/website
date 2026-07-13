@@ -81,10 +81,7 @@ section.hero-sky {
   overflow: hidden;
   padding: 4.5rem 3rem;
   color: var(--text-light);
-  background:
-    radial-gradient(ellipse at 75% 30%, rgba(45, 70, 120, 0.35), transparent 55%),
-    radial-gradient(ellipse at 60% 80%, rgba(30, 50, 90, 0.3), transparent 50%),
-    linear-gradient(160deg, #04060c 0%, #080d18 45%, #0b1322 100%);
+  background: #000;
 }
 #starfield {
   position: absolute;
