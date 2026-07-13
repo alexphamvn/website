@@ -36,7 +36,8 @@
 <!-- ============================================================
      [EDIT: HERO / ABOUT]
      ============================================================ -->
-<section class="hero">
+<section class="hero-sky">
+  <canvas id="starfield" aria-hidden="true"></canvas>
   <!-- ============================================================
        [EDIT: NAME BOX] — Isometric open-bracket frame
        Change "Your Name" and the subtitle below.
@@ -72,51 +73,152 @@
       <div class="subtitle">“Science’s job is to build the box, then think outside it.”</div>
     </div>
   </div>
+</section>
 
+<section class="hero">
   <div class="hero-content">
-    <!-- To use a real photo: replace this div with:
-         <img src="your-photo.jpg" alt="Your name" class="hero-photo" style="object-fit:cover;" /> -->
-    <img src="your-photo.jpg" alt="Your name" class="hero-photo" style="object-fit:cover;" />
+    <div class="hero-photo-col">
+      <img src="your-photo.jpg" alt="Alex Pham" class="hero-photo" style="object-fit:cover;" />
+      <div class="photo-titles">
+        <p class="pt-role">Management Researcher</p>
+        <p>PhD Student, Bernard M. and Ruth R. Bass Center for Leadership Studies, School of Management, Binghamton University.</p>
+        <p>Former Media Content Acquisition Strategist</p>
+      </div>
+    </div>
 
     <div class="hero-bio">
       <p>
-        I am Alex (Hoang-An) Pham, a first-year PhD student at the Bernard M. and Ruth R. Bass Center for Leadership Studies, School of Management, Binghamton University. 
+        “My” science has two sides: you either have to work well within what the paradigm expects, or you have to make the paradigm “wow”
+        with something unexpected. These ideas stem from my experiences in the biochemistry lab and the film industry. They may seem unrelated,
+        but together they show me how ideas are created and how novelty is achieved. During my time working in the lab, I saw that people apply
+        the same process to discover new natural compounds. Later, as a content acquisition strategist, I observed that creativity is limited
+        by what audiences accept and prefer. However, both fields strive to move beyond these limits through different paths: new technologies
+        and methods in science, or doing something unfamiliar and educating audiences about new content in entertainment.
       </p>
       <p>
-        My research interests mainly focus on the dynamics of organizational innovation and identity. I particularly study how innovation 
-        and evolution happen at the firm level and what impacts it can have across the organization, such as changes in power structure 
-        and human resources.
-      </p>
-      <p>
-        My primary concentration is innovation. My first-year paper is about the response of firms regarding innovation performance feedback, 
-        taking attention to the development of new technology as an activator. The paper addresses the silence on the Attention-Based View’s 
-        level of analysis. Another projects related to innovation that I am currently working on are related to how innovation happens in 
-        high-paradigm areas (e.g., hard science), where the publishing, working process, and methods are well-established and agreed upon. 
-      </p>
-      <p>
-        In my secondary line of research, I leverage big data and develop models to examine the evolution of organizations. One of my 
-        representative projects is about how strategic attention changes results in the change of power structure, which is presented at 
-        the Academy of Management Annual Meeting 2026 in Pennsylvania. The study leverages computational modeling and simulation to visualize 
-        the theory. Other organizational evolution projects I am working on are related to how industry changes lead to organizational adaptation 
-        regarding human resources. 
-      </p>
-      <p>
-        In my studies, I am trying to utilize both quantitative and qualitative methodologies. For instance, my favorite methods, such as 
-        Polynomial Regression and Hierarchical Linear Modeling, are used to test hypotheses. Besides that, I present and ground theories 
-        using qualitative methods, computational models, and simulation. 
-      </p>
-      <p>
-        Before joining Binghamton University, I got my MBA from Sungkyunkwan Graduate School of Business and had 5 years of experience 
-        in the entertainment industry as a media content distribution and acquisition strategist.
+        My research interests mainly focus on the organizational innovation and evolution. I particularly study how innovation and evolution
+        happen at the firm level and what impacts it can have across the organization, such as changes in power structure and human resources.
       </p>
     </div>
   </div>
-  
+</section>
+
+<!-- ============================================================
+     RESEARCH QUESTIONS — two-column layout from Presentation4
+     ============================================================ -->
+<section class="content light research-questions">
+  <div class="rq-grid">
+
+    <div class="rq-card">
+      <div class="rq-icon icon-bubbles" aria-hidden="true">
+        <span class="b b1"></span>
+        <span class="b b2"></span>
+        <span class="b b3"></span>
+        <span class="b b4"></span>
+        <span class="b b5"></span>
+        <span class="b b6"></span>
+        <span class="b b7"></span>
+        <span class="b b8"></span>
+      </div>
+      <h2 class="rq-question">How do innovative and novel ideas and outcome emerge?</h2>
+      <div class="rq-tags rq-tags-a">
+        <span>Internal factors</span>
+        <span>External factors</span>
+      </div>
+    </div>
+
+    <div class="rq-card">
+      <div class="rq-icon icon-waves" aria-hidden="true">
+        <span class="w w1"></span>
+        <span class="w w2"></span>
+        <span class="w w3"></span>
+        <span class="w-dot"></span>
+      </div>
+      <h2 class="rq-question">How do technology changes impact organizations?</h2>
+      <div class="rq-tags rq-tags-b">
+        <span>Organizational structure</span>
+        <span>Human resources</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="about-more">
+    <p>
+      I got my MBA from Sungkyunkwan Graduate School of Business and had 5 years of experience in the entertainment industry as a media
+      content distribution and acquisition strategist. Before that, I spent two years in a biochemistry lab during high school for the
+      Intel International Science and Engineering Fair, where I won second prize at the national level with a potential cancer treatment
+      compound. I decided to leave the field after my doctors advised me &mdash; due to a hereditary risk of lung disease &mdash; not to work
+      with chemical exposure.
+    </p>
+    <p>
+      That is why besides journal papers in management, I like to spend time on reading how technology works and other scientific fields
+      updates. I am also a novice songwriter and a fashion enthusiast.
+    </p>
+  </div>
 </section>
 
 <footer>
   <p>© Alex Pham · <a href="mailto:me@alexhoanganpham.com">me@alexhoanganpham.com</a></p>
 </footer>
+
+<!-- ===== Starry-night animation for the name/slogan banner ===== -->
+<script>
+(function () {
+  const canvas = document.getElementById('starfield');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let stars = [], W = 0, H = 0;
+
+  function resize() {
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+    build();
+  }
+
+  function build() {
+    stars = [];
+    const count = Math.floor((W * H) / 1800);
+    for (let i = 0; i < count; i++) {
+      stars.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() < 0.92 ? Math.random() * 1.1 + 0.3 : Math.random() * 1.6 + 1.2, // a few bigger stars
+        base: Math.random() * 0.6 + 0.35,          // base brightness
+        tw: Math.random() * Math.PI * 2,           // twinkle phase
+        ts: Math.random() * 0.035 + 0.008,         // twinkle speed
+        vx: (Math.random() - 0.5) * 0.08,          // slow drift
+        vy: (Math.random() - 0.5) * 0.05,
+        blue: Math.random() < 0.25                 // some cool-blue stars
+      });
+    }
+  }
+
+  function frame() {
+    ctx.clearRect(0, 0, W, H);
+    for (const s of stars) {
+      s.tw += s.ts;
+      s.x += s.vx; s.y += s.vy;
+      if (s.x < 0) s.x = W; if (s.x > W) s.x = 0;
+      if (s.y < 0) s.y = H; if (s.y > H) s.y = 0;
+      const a = s.base * (0.35 + 0.65 * (0.5 + 0.5 * Math.sin(s.tw)));
+      ctx.beginPath();
+      ctx.fillStyle = s.blue
+        ? 'rgba(160,190,255,' + a.toFixed(3) + ')'
+        : 'rgba(245,246,248,' + a.toFixed(3) + ')';
+      if (s.r > 1.2) { ctx.shadowBlur = 6; ctx.shadowColor = 'rgba(180,200,255,0.8)'; }
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }
+    requestAnimationFrame(frame);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  frame();
+})();
+</script>
 
 </body>
 </html>

@@ -74,6 +74,28 @@ section.hero {
 }
 
 /* ============================================================
+   STARRY-NIGHT BANNER — name + slogan section
+   ============================================================ */
+section.hero-sky {
+  position: relative;
+  overflow: hidden;
+  padding: 4.5rem 3rem;
+  color: var(--text-light);
+  background:
+    radial-gradient(ellipse at 75% 30%, rgba(45, 70, 120, 0.35), transparent 55%),
+    radial-gradient(ellipse at 60% 80%, rgba(30, 50, 90, 0.3), transparent 50%),
+    linear-gradient(160deg, #04060c 0%, #080d18 45%, #0b1322 100%);
+}
+#starfield {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+/* ============================================================
    ISOMETRIC NAME BLOCK — the open 3D bracket framing the name
    ============================================================
    To resize: change max-width and min-height below.
@@ -84,10 +106,25 @@ section.hero {
   position: relative;
   display: block;
   width: 100%;
-  max-width: 420px;
+  max-width: 560px;
   min-height: 150px;
-  margin-bottom: 2.5rem;
-  padding: 1.5rem 0 2rem 6rem;
+  margin-bottom: 0;
+  padding: 1.5rem 1.5rem 2rem 6rem;
+}
+/* Squarespace-style wedge that sweeps in on hover */
+.iso-name-block::before {
+  content: "";
+  position: absolute;
+  inset: -0.5rem -1rem;
+  background: linear-gradient(105deg, var(--accent) 0%, #4b45c6 100%);
+  transform: skewX(-14deg) scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: 0;
+  pointer-events: none;
+}
+.iso-name-block:hover::before {
+  transform: skewX(-14deg) scaleX(1);
 }
 .iso-frame {
   position: absolute;
@@ -117,12 +154,13 @@ section.hero {
   color: var(--text-light);
 }
 .iso-name-text .subtitle {
-  white-space: nowrap;
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
+  font-size: 1.15rem;            /* bigger slogan */
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  opacity: 0.7;
-  margin-top: 0.6rem;
+  opacity: 0.85;
+  margin-top: 0.8rem;
   color: var(--text-light);
 }
 
@@ -146,6 +184,136 @@ section.hero {
   padding-top: 0.5rem;
 }
 .hero-bio p { margin-bottom: 1rem; }
+
+/* Titles under the photo */
+.photo-titles {
+  width: 280px;
+  margin-top: 1rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+.photo-titles p { margin-bottom: 0.5rem; opacity: 0.9; }
+.photo-titles .pt-role {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  opacity: 1;
+}
+
+/* ============================================================
+   RESEARCH QUESTIONS — two-column layout (from Presentation4)
+   ============================================================ */
+.research-questions .rq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.rq-card {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.rq-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(26, 29, 34, 0.12);
+  background: #fff;
+}
+.rq-question {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.55rem;
+  line-height: 1.25;
+  margin: 1.5rem 0;
+}
+.rq-tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+.rq-tags span {
+  display: inline-block;
+  padding: 0.5rem 1.4rem;
+  border-radius: 999px;
+  color: var(--text-light);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+.rq-tags-a span { background: linear-gradient(120deg, #4f46e5, #7c3aed); }
+.rq-tags-b span { background: linear-gradient(120deg, #ea580c, #f59e0b); }
+
+/* ----- Icon 1: bubbles that emerge on hover ----- */
+.rq-icon {
+  position: relative;
+  width: 150px;
+  height: 100px;
+  margin: 0 auto;
+}
+.icon-bubbles .b {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 30%, #8b7cf8, #4f46e5);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
+  opacity: 0.25;
+  transform: scale(0.25);
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+}
+.icon-bubbles .b1 { width: 62px; height: 62px; left: 18px;  top: 12px; }
+.icon-bubbles .b2 { width: 28px; height: 28px; left: 90px;  top: 8px;  background: radial-gradient(circle at 32% 30%, #b79cf9, #7c3aed); transition-delay: 0.08s; }
+.icon-bubbles .b3 { width: 42px; height: 42px; left: 92px;  top: 46px; background: radial-gradient(circle at 32% 30%, #9f8bfa, #6d28d9); transition-delay: 0.16s; }
+.icon-bubbles .b4 { width: 9px;  height: 9px;  left: 128px; top: 34px; transition-delay: 0.24s; }
+.icon-bubbles .b5 { width: 9px;  height: 9px;  left: 78px;  top: 66px; transition-delay: 0.3s; }
+.icon-bubbles .b6 { width: 9px;  height: 9px;  left: 84px;  top: 2px;  transition-delay: 0.36s; }
+.icon-bubbles .b7 { width: 18px; height: 18px; left: 58px;  top: 78px; background: radial-gradient(circle at 32% 30%, #b79cf9, #7c3aed); transition-delay: 0.42s; }
+.icon-bubbles .b8 { width: 9px;  height: 9px;  left: 42px;  top: 82px; transition-delay: 0.48s; }
+.rq-card:hover .icon-bubbles .b {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ----- Icon 2: wifi-style waves that appear in order ----- */
+.icon-waves .w {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  border: 7px solid transparent;
+  border-top-color: #ea580c;
+  border-radius: 50%;
+  transform: translateX(-50%) translateY(10px);
+  opacity: 0.2;
+  transition: opacity 0.35s ease, transform 0.35s ease, border-top-color 0.35s ease;
+}
+.icon-waves .w1 { width: 46px;  height: 46px;  border-top-color: #f59e0b; transition-delay: 0s; }
+.icon-waves .w2 { width: 82px;  height: 82px;  border-top-color: #f97316; transition-delay: 0.15s; }
+.icon-waves .w3 { width: 118px; height: 118px; border-top-color: #ea580c; transition-delay: 0.3s; }
+.icon-waves .w-dot {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ea580c;
+  transform: translateX(-50%);
+  box-shadow: 0 3px 8px rgba(234, 88, 12, 0.4);
+}
+.rq-card:hover .icon-waves .w {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Closing paragraphs after the questions */
+.about-more {
+  max-width: 1000px;
+  margin: 3.5rem auto 0;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+.about-more p { margin-bottom: 1rem; }
 
 .section-jump {
   text-align: center;
@@ -550,8 +718,12 @@ footer a {
 @media (max-width: 720px) {
   nav.topnav { padding: 1rem; gap: 1rem; font-size: 0.8rem; flex-wrap: wrap; }
   section.hero, section.content { padding: 2rem 1.5rem; }
+  section.hero-sky { padding: 3rem 1.5rem; }
   .hero-content { grid-template-columns: 1fr; }
   .hero-photo { width: 140px; height: 170px; }
+  .photo-titles { width: 100%; }
+  .iso-name-text .subtitle { font-size: 0.95rem; }
+  .research-questions .rq-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   .section-title { font-size: 2rem; }
   .teaching-row { grid-template-columns: 1fr; gap: 0.5rem; }
   .activities-grid { grid-template-columns: 1fr; }
