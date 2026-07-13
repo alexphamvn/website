@@ -135,7 +135,7 @@ section.hero-sky {
   line-height: 1;
   letter-spacing: -0.02em;
   color: var(--text-light);
-top: -1.5rem;
+  top: -1.5rem;
 }
 .iso-name-text .subtitle {
   white-space: nowrap;           /* keep slogan on one line */
@@ -145,7 +145,7 @@ top: -1.5rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   opacity: 0.85;
-  margin-top: 0.8rem;
+  margin-top: 0rem;
   color: var(--text-light);
    
 }
