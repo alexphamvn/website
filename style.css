@@ -370,6 +370,13 @@ section.content.dark  { background: var(--bg-dark);  color: var(--text-light); }
   opacity: 0.95;
 }
 
+/* ADD THESE LINES BACK IN FOR SIZING */
+.method.rank-1 { font-size: 3.4rem; }
+.method.rank-2 { font-size: 2.4rem; font-weight: 500; }
+.method.rank-3 { font-size: 1.8rem; font-weight: 400; }
+.method.rank-4 { font-size: 1.2rem; font-weight: 400; }
+.method.rank-5 { font-size: 1rem;  font-weight: 400; }
+
 /* Updated placement to match the desired layout */
 .method:nth-child(1)  { left: 45%; top: 45%; }  /* Polynomial Regression */
 .method:nth-child(2)  { left: 63%; top: 28%; }  /* Text Embeddings */
