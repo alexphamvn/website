@@ -56,31 +56,11 @@
 
   </div>
 
-  <!-- ============================================================
-       METHOD CLOUD — topic-model style, biggest term in the
-       center, the rest placed around it.
-       TO ADD A NEW METHOD: copy a <span> and paste it AFTER the
-       last one. Pick a size class:
-         rank-1 = biggest … rank-5 = smallest
-       Its position and gray shade are assigned automatically
-       (up to 10 surrounding spots are pre-defined in style.css).
-       ============================================================ -->
-  <div class="method-cloud">
-    <span class="method rank-1">Polynomial Regression</span>
-    <span class="method rank-1">Text Embeddings</span>
-    <span class="method rank-2">Hierarchical Linear Modeling</span>
-    <span class="method rank-3">Simulation</span>
-    <span class="method rank-2">Structural Equation Modeling</span>
-    <span class="method rank-3">Grounded Theory</span>
-    <span class="method rank-2">Computational Modeling</span>
-    <span class="method rank-4">Fixed-effect Regression</span>
-    <span class="method rank-2">Ordinary Least Squares</span>
-    <span class="method rank-4">Confirmatory Factor Analysis</span>
-    <span class="method rank-4">Exploratory Factor Analysis</span>
-    <span class="method rank-5">t-test</span>
+<div class="credit-roller">
+  <div class="credit-track" id="credit-track">
+    <!-- The JavaScript below will automatically populate the words here -->
   </div>
-  </div>
-</section>
+</div>
 
 <section class="content light">
   <h2 class="section-title">My current studies</h2>
@@ -189,6 +169,54 @@
 <footer>
   <p>© Alex Pham · <a href="mailto:me@alexhoanganpham.com">me@alexhoanganpham.com</a></p>
 </footer>
+<script>
+  (function() {
+    const methods = [
+      "Polynomial Regression", "Text Embeddings", "Hierarchical Linear Modeling",
+      "Simulation", "Structural Equation Modeling", "Grounded Theory",
+      "Computational Modeling", "Fixed-effect Regression", "Ordinary Least Squares",
+      "Confirmatory Factor Analysis", "Exploratory Factor Analysis", "t-test"
+    ];
 
+    const track = document.getElementById('credit-track');
+    if (!track) return;
+
+    // 1. Populate the track with the words
+    methods.forEach(method => {
+      const div = document.createElement('div');
+      div.className = 'credit-item';
+      div.innerText = method;
+      track.appendChild(div);
+    });
+
+    // 2. Set the initial middle item as active (index 1 is the middle of the 3 visible slots)
+    if (track.children.length > 1) {
+      track.children[1].classList.add('active');
+    }
+
+    // 3. The continuous rolling function
+    function rotateCredits() {
+      // Slide track up by the height of one item (60px)
+      track.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+      track.style.transform = `translateY(-60px)`;
+      
+      // Shift the active highlight to the new middle item (which is entering at index 2)
+      Array.from(track.children).forEach(item => item.classList.remove('active'));
+      if (track.children[2]) {
+        track.children[2].classList.add('active');
+      }
+
+      // Once the slide animation finishes, invisibly move the top item to the bottom of the list to loop it
+      setTimeout(() => {
+        track.style.transition = 'none';
+        track.appendChild(track.firstElementChild);
+        track.style.transform = `translateY(0)`;
+      }, 600); // 600ms matches the CSS transition time
+    }
+
+    // Run the rotate function every 2 seconds
+    setInterval(rotateCredits, 2000);
+  })();
+</script>
 </body>
 </html>
