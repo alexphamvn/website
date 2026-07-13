@@ -79,7 +79,7 @@ section.hero {
 section.hero-sky {
   position: relative;
   overflow: hidden;
-  height: 320px;                  /* banner height — fixed */
+  padding: 4.5rem 3rem;
   color: var(--text-light);
   background: #000;
 }
@@ -100,11 +100,13 @@ section.hero-sky {
    To change line color: edit stroke color in .iso-frame line
    ============================================================ */
 .iso-name-block {
-  position: absolute;              /* pinned inside the banner       */
-  left: 3rem;                      /* ← distance from the left edge  */
-  bottom: 9pt;                     /* ← distance from the bottom edge */
-  width: min(560px, calc(100% - 6rem));
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 560px;
   min-height: 150px;
+  margin-top: 10rem;      /* push the whole figure down */
+  margin-bottom: 0;
   padding: 2rem 1.5rem 2rem 8.5rem;  /* larger left padding keeps text inside the box */
 }
 .iso-frame {
@@ -348,28 +350,42 @@ section.content.dark  { background: var(--bg-dark);  color: var(--text-light); }
    word's order in the HTML (nth-child), so a new method appended
    at the end takes the next free spot — 10 spots pre-defined. */
 .method-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: baseline;
-  column-gap: 1.1rem;
-  row-gap: 0.4rem;
+  position: relative;
+  min-height: 420px;
 }
 .method {
-  white-space: nowrap;         /* each method stays on ONE line */
+  position: absolute;
+  transform: translate(-50%, -50%);
   font-family: var(--font-display);
   font-weight: 900;
-  line-height: 1.15;
+  line-height: 1.1;
+  text-align: center;
+  max-width: 230px;
   cursor: default;
   transition: opacity 0.25s ease;
   opacity: 0.95;
 }
 .method:hover { opacity: 1; }
-.method.rank-1 { font-size: 2.1rem; }
-.method.rank-2 { font-size: 1.55rem; }
-.method.rank-3 { font-size: 1.3rem;  font-weight: 700; }
-.method.rank-4 { font-size: 1rem;    font-weight: 700; }
-.method.rank-5 { font-size: 0.85rem; font-weight: 500; }
+.method.rank-1 { font-size: 2.2rem; }
+.method.rank-2 { font-size: 1.6rem; }
+.method.rank-3 { font-size: 1.35rem; font-weight: 700; }
+.method.rank-4 { font-size: 1.1rem;  font-weight: 700; }
+.method.rank-5 { font-size: 0.9rem;  font-weight: 500; }
+/* placement: 1st word = center, the rest ring around it */
+.method:nth-child(1)  { left: 50%; top: 50%; }  /* center (biggest)   */
+.method:nth-child(2)  { left: 50%; top: 13%; }  /* top center         */
+.method:nth-child(3)  { left: 50%; top: 87%; }  /* bottom center      */
+.method:nth-child(4)  { left: 20%; top: 32%; }  /* upper left         */
+.method:nth-child(5)  { left: 79%; top: 31%; }  /* upper right        */
+.method:nth-child(6)  { left: 21%; top: 68%; }  /* lower left         */
+.method:nth-child(7)  { left: 79%; top: 69%; }  /* lower right        */
+.method:nth-child(8)  { left: 26%; top: 3%;  }  /* top-left corner    */
+.method:nth-child(9)  { left: 74%; top: 97%; }  /* bottom-right corner*/
+.method:nth-child(10) { left: 26%; top: 97%; }  /* bottom-left corner */
+.method:nth-child(11) { left: 76%; top: 3%;  }  /* top-right corner   */
+.method:nth-child(12) { left: 8%;  top: 50%; }  /* mid left           */
+.method:nth-child(13) { left: 92%; top: 50%; }  /* mid right (spare)  */
+.method:nth-child(14) { left: 50%; top: 100%;}  /* below (spare)      */
 /* rotating palette — different shades of gray
    (works for any number of methods) */
 .method:nth-child(6n + 1) { color: #f5f6f8; } /* near white   */
@@ -750,18 +766,19 @@ footer a {
 @media (max-width: 720px) {
   nav.topnav { padding: 1rem; gap: 1rem; font-size: 0.8rem; flex-wrap: wrap; }
   section.hero, section.content { padding: 2rem 1.5rem; }
-  section.hero-sky { height: 260px; }
+  section.hero-sky { padding: 3rem 1.5rem; }
   .hero-content { grid-template-columns: 1fr; }
   .hero-photo { width: 140px; height: 170px; }
   .photo-titles { width: 100%; }
   .iso-name-text .subtitle { font-size: 0.95rem; white-space: normal; }
   .rq-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   .intro-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .method-cloud { min-height: 280px; }
   .section-title { font-size: 2rem; }
   .teaching-row { grid-template-columns: 1fr; gap: 0.5rem; }
   .activities-grid { grid-template-columns: 1fr; }
   .testimonials { margin: 3rem -1.5rem -2rem; padding: 3rem 1.5rem; }
-  .iso-name-block { left: 1.5rem; width: calc(100% - 3rem); padding: 1.5rem 1.5rem 2rem 2.5rem; }
+  .iso-name-block { padding: 1.5rem 1.5rem 2rem 2.5rem; }
   .iso-name-text h1 { font-size: 1.8rem; }
   .testimonial-carousel { gap: 0.3rem; }
   .testimonial-track .testimonial { padding: 0.5rem 0.5rem; }
