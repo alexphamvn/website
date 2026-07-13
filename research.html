@@ -35,7 +35,7 @@
      ============================================================ -->
 <section class="content dark research-intro">
   <!-- Increased gap to 5rem to add more space between Intro and Methods -->
-  <div class="intro-grid" style="align-items: start; gap: 5rem;">
+  <div class="intro-grid" style="align-items: start; gap: 10rem;">
  
     <div class="summary-works">
       <h2 class="section-title">Summary of Works</h2>
@@ -205,9 +205,8 @@
 
     // 3. The continuous rolling function
     function rotateCredits() {
-      // Slide track up by the height of one item (60px)
       track.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
-      track.style.transform = `translateY(-60px)`;
+      track.style.transform = `translateY(-40px)`;
       
       // Shift the active highlight to the new middle item (which is entering at index 2)
       Array.from(track.children).forEach(item => item.classList.remove('active'));
