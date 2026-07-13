@@ -200,23 +200,22 @@ section.hero-sky {
 /* ============================================================
    RESEARCH QUESTIONS — two-column layout (from Presentation4)
    ============================================================ */
-.research-questions .rq-grid {
+.rq-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  max-width: 1000px;
-  margin: 0 auto;
+  gap: 2rem;
+  margin: 2rem 0;
 }
 .rq-card {
   text-align: center;
-  padding: 2.5rem 1.5rem;
+  padding: 2rem 1.5rem;
   border-radius: 8px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 .rq-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(26, 29, 34, 0.12);
-  background: #fff;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
 }
 .rq-question {
   font-family: var(--font-display);
@@ -347,39 +346,59 @@ section.content.dark  { background: var(--bg-dark);  color: var(--text-light); }
 /* ============================================================
    RESEARCH INTRO — summary of works + method cloud
    ============================================================ */
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  max-width: 1200px;
+}
 .summary-works {
-  max-width: 1000px;
   font-size: 1.05rem;
   line-height: 1.65;
 }
 .summary-works p { margin-bottom: 1rem; }
 
-/* Method cloud — sized by rank like a topic model.
+/* Method cloud — topic-model style, sized by rank.
    rank-1 = biggest … rank-5 = smallest.
-   Colors rotate automatically via nth-child, so new methods
-   appended at the end pick up a color on their own. */
+   The biggest term sits in the CENTER; the others are placed
+   around it. Position + gray shade come automatically from the
+   word's order in the HTML (nth-child), so a new method appended
+   at the end takes the next free spot — 10 spots pre-defined. */
 .method-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.8rem 2.2rem;
-  max-width: 1000px;
-  margin-top: 1rem;
+  position: relative;
+  min-height: 340px;
 }
 .method {
+  position: absolute;
+  transform: translate(-50%, -50%);
   font-family: var(--font-display);
   font-weight: 900;
-  line-height: 1.15;
+  line-height: 1.1;
+  text-align: center;
+  max-width: 230px;
   cursor: default;
-  transition: transform 0.25s ease, opacity 0.25s ease;
+  transition: opacity 0.25s ease;
   opacity: 0.95;
 }
-.method:hover { transform: translateY(-3px); opacity: 1; }
-.method.rank-1 { font-size: 3rem; }
-.method.rank-2 { font-size: 2.4rem; }
-.method.rank-3 { font-size: 1.9rem; font-weight: 700; }
-.method.rank-4 { font-size: 1.5rem; font-weight: 700; }
-.method.rank-5 { font-size: 1.15rem; font-weight: 500; }
+.method:hover { opacity: 1; }
+.method.rank-1 { font-size: 2.2rem; }
+.method.rank-2 { font-size: 1.6rem; }
+.method.rank-3 { font-size: 1.35rem; font-weight: 700; }
+.method.rank-4 { font-size: 1.1rem;  font-weight: 700; }
+.method.rank-5 { font-size: 0.9rem;  font-weight: 500; }
+/* placement: 1st word = center, the rest ring around it */
+.method:nth-child(1)  { left: 50%; top: 50%; }
+.method:nth-child(2)  { left: 50%; top: 15%; }
+.method:nth-child(3)  { left: 50%; top: 84%; }
+.method:nth-child(4)  { left: 13%; top: 33%; }
+.method:nth-child(5)  { left: 85%; top: 32%; }
+.method:nth-child(6)  { left: 82%; top: 68%; }
+.method:nth-child(7)  { left: 16%; top: 68%; }
+.method:nth-child(8)  { left: 20%; top: 2%;  }
+.method:nth-child(9)  { left: 82%; top: 4%;  }
+.method:nth-child(10) { left: 50%; top: 98%; }
+.method:nth-child(11) { left: 12%; top: 96%; }
 /* rotating palette — different shades of gray
    (works for any number of methods) */
 .method:nth-child(6n + 1) { color: #f5f6f8; } /* near white   */
@@ -765,7 +784,9 @@ footer a {
   .hero-photo { width: 140px; height: 170px; }
   .photo-titles { width: 100%; }
   .iso-name-text .subtitle { font-size: 0.95rem; }
-  .research-questions .rq-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .rq-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .intro-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .method-cloud { min-height: 280px; }
   .section-title { font-size: 2rem; }
   .teaching-row { grid-template-columns: 1fr; gap: 0.5rem; }
   .activities-grid { grid-template-columns: 1fr; }
