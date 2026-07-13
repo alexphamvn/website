@@ -79,10 +79,7 @@ section.hero {
 section.hero-sky {
   position: relative;
   overflow: hidden;
-  display: flex;
-  align-items: flex-end;          /* figure sits at the bottom … */
-  min-height: 320px;              /* … of a fixed-height banner  */
-  padding: 3rem 3rem 9pt;         /* ← 9pt gap to the bottom edge */
+  height: 320px;                  /* banner height — fixed */
   color: var(--text-light);
   background: #000;
 }
@@ -103,12 +100,11 @@ section.hero-sky {
    To change line color: edit stroke color in .iso-frame line
    ============================================================ */
 .iso-name-block {
-  position: relative;
-  display: block;
-  width: 100%;
-  max-width: 560px;
+  position: absolute;              /* pinned inside the banner       */
+  left: 3rem;                      /* ← distance from the left edge  */
+  bottom: 9pt;                     /* ← distance from the bottom edge */
+  width: min(560px, calc(100% - 6rem));
   min-height: 150px;
-  margin-bottom: 0;
   padding: 2rem 1.5rem 2rem 8.5rem;  /* larger left padding keeps text inside the box */
 }
 .iso-frame {
@@ -768,7 +764,7 @@ footer a {
 @media (max-width: 720px) {
   nav.topnav { padding: 1rem; gap: 1rem; font-size: 0.8rem; flex-wrap: wrap; }
   section.hero, section.content { padding: 2rem 1.5rem; }
-  section.hero-sky { padding: 3rem 1.5rem; }
+  section.hero-sky { height: 260px; }
   .hero-content { grid-template-columns: 1fr; }
   .hero-photo { width: 140px; height: 170px; }
   .photo-titles { width: 100%; }
@@ -780,7 +776,7 @@ footer a {
   .teaching-row { grid-template-columns: 1fr; gap: 0.5rem; }
   .activities-grid { grid-template-columns: 1fr; }
   .testimonials { margin: 3rem -1.5rem -2rem; padding: 3rem 1.5rem; }
-  .iso-name-block { padding: 1.5rem 1.5rem 2rem 2.5rem; }
+  .iso-name-block { left: 1.5rem; width: calc(100% - 3rem); padding: 1.5rem 1.5rem 2rem 2.5rem; }
   .iso-name-text h1 { font-size: 1.8rem; }
   .testimonial-carousel { gap: 0.3rem; }
   .testimonial-track .testimonial { padding: 0.5rem 0.5rem; }
