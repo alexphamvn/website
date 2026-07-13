@@ -105,9 +105,9 @@ section.hero-sky {
   width: 100%;
   max-width: 560px;
   min-height: 150px;
-  margin-top: 10rem;      /* push the whole figure down */
+  margin-top: 2.5rem;      /* push the whole figure down */
   margin-bottom: 0;
-  padding: 2rem 2.5rem 2rem 8.5rem;  /* larger left padding keeps text inside the box */
+  padding: 2rem 1.5rem 2rem 8.5rem;  /* larger left padding keeps text inside the box */
 }
 .iso-frame {
   position: absolute;
@@ -351,7 +351,7 @@ section.content.dark  { background: var(--bg-dark);  color: var(--text-light); }
    at the end takes the next free spot — 10 spots pre-defined. */
 .method-cloud {
   position: relative;
-  min-height: 340px;
+  min-height: 420px;
 }
 .method {
   position: absolute;
@@ -372,17 +372,20 @@ section.content.dark  { background: var(--bg-dark);  color: var(--text-light); }
 .method.rank-4 { font-size: 1.1rem;  font-weight: 700; }
 .method.rank-5 { font-size: 0.9rem;  font-weight: 500; }
 /* placement: 1st word = center, the rest ring around it */
-.method:nth-child(1)  { left: 50%; top: 50%; }
-.method:nth-child(2)  { left: 50%; top: 15%; }
-.method:nth-child(3)  { left: 50%; top: 84%; }
-.method:nth-child(4)  { left: 13%; top: 33%; }
-.method:nth-child(5)  { left: 85%; top: 32%; }
-.method:nth-child(6)  { left: 82%; top: 68%; }
-.method:nth-child(7)  { left: 16%; top: 68%; }
-.method:nth-child(8)  { left: 20%; top: 2%;  }
-.method:nth-child(9)  { left: 82%; top: 4%;  }
-.method:nth-child(10) { left: 50%; top: 98%; }
-.method:nth-child(11) { left: 12%; top: 96%; }
+.method:nth-child(1)  { left: 50%; top: 50%; }  /* center (biggest)   */
+.method:nth-child(2)  { left: 50%; top: 13%; }  /* top center         */
+.method:nth-child(3)  { left: 50%; top: 87%; }  /* bottom center      */
+.method:nth-child(4)  { left: 20%; top: 32%; }  /* upper left         */
+.method:nth-child(5)  { left: 79%; top: 31%; }  /* upper right        */
+.method:nth-child(6)  { left: 21%; top: 68%; }  /* lower left         */
+.method:nth-child(7)  { left: 79%; top: 69%; }  /* lower right        */
+.method:nth-child(8)  { left: 26%; top: 3%;  }  /* top-left corner    */
+.method:nth-child(9)  { left: 74%; top: 97%; }  /* bottom-right corner*/
+.method:nth-child(10) { left: 26%; top: 97%; }  /* bottom-left corner */
+.method:nth-child(11) { left: 76%; top: 3%;  }  /* top-right corner   */
+.method:nth-child(12) { left: 8%;  top: 50%; }  /* mid left           */
+.method:nth-child(13) { left: 92%; top: 50%; }  /* mid right (spare)  */
+.method:nth-child(14) { left: 50%; top: 100%;}  /* below (spare)      */
 /* rotating palette — different shades of gray
    (works for any number of methods) */
 .method:nth-child(6n + 1) { color: #f5f6f8; } /* near white   */
