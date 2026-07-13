@@ -105,7 +105,7 @@ section.hero-sky {
   width: 100%;
   max-width: 560px;
   min-height: 150px;
-  margin-top: 3.5rem;         /* Decrease this value or make it negative to move the figure up */
+  margin-top: 7rem;         /* Decrease this value or make it negative to move the figure up */
   margin-bottom: 0;
   padding: 2rem 1.5rem 2rem 8.5rem; /* larger left padding keeps text inside the box */
 }
@@ -135,6 +135,7 @@ section.hero-sky {
   line-height: 1;
   letter-spacing: -0.02em;
   color: var(--text-light);
+top: -1.5rem;
 }
 .iso-name-text .subtitle {
   white-space: nowrap;           /* keep slogan on one line */
@@ -146,6 +147,7 @@ section.hero-sky {
   opacity: 0.85;
   margin-top: 0.8rem;
   color: var(--text-light);
+   
 }
 
 .hero-content {
