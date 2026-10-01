@@ -52,3 +52,11 @@ When you're ready to publish:
 - **Easiest:** drag the whole folder into [Netlify Drop](https://app.netlify.com/drop) — free, takes 30 seconds
 - **GitHub Pages:** upload the folder to a GitHub repo and enable Pages in settings
 - **University server:** ask your IT department for hosting space (usually free for students)
+
+### The 3D lanyard badge (home page)
+The home page has a starry sky behind the whole page, with an interactive ID badge on a lanyard on the left and your introduction on the right — visitors can grab it, drag it and fling it. It's built with React Three Fiber + Rapier physics and lives in **`badge.js`** (already built, nothing to install).
+
+- **Change the text on the card:** edit the name / slogan in the `[EDIT: NAME BOX]` section; the role, photo, university, department and website are the `data-role`, `data-photo`, `data-org`, `data-dept` and `data-site` attributes on `<div id="badge-3d">`.
+- **Fallback:** if a browser can't do 3D, the original name box shows instead.
+- **Opening the file straight from your computer** (double-click) works, but browsers block the photo there, so the card shows your initials. On the live site the photo appears.
+- **Changing the design itself:** the source is in `badge-src/`. With Node.js installed, run `npm install` then `npm run build` inside that folder to regenerate `badge.js`.

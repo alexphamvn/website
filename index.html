@@ -22,7 +22,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="home">
 
 <!-- ===== Navigation (same on every page) ===== -->
 <nav class="topnav">
@@ -35,56 +35,69 @@
 
 <!-- ============================================================
      [EDIT: HERO / ABOUT]
+     Left: interactive 3D badge.  Right: your introduction.
+     The starry sky behind the whole page is drawn by the
+     "starfield" script at the bottom of this file.
      ============================================================ -->
+<canvas id="starfield" aria-hidden="true"></canvas>
+
 <section class="hero-sky">
-  <canvas id="starfield" aria-hidden="true"></canvas>
-  <!-- ============================================================
-       [EDIT: NAME BOX] — Isometric open-bracket frame
-       Change "Your Name" and the subtitle below.
-       The SVG draws the 3D bracket shape — you usually don't
-       need to touch it.
-       ============================================================ -->
-  <div class="iso-name-block">
-    <svg class="iso-frame" viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <!-- ===== TOP FACE (only the back-top slanted line — no front-top edge) ===== -->
-      <!-- Back-top edge going right -->
-      <line x1="60" y1="5" x2="260" y2="5" />
-      <!-- Top-left connection (front-top to back-top) -->
-      <line x1="20" y1="30" x2="60" y2="5" />
+  <div class="badge-col">
+    <!-- ============================================================
+         [EDIT: NAME BOX] — Isometric open-bracket frame
+         Change "Your Name" and the subtitle below.
+         The SVG draws the 3D bracket shape — you usually don't
+         need to touch it.
+         ============================================================ -->
+    <div class="iso-name-block">
+      <svg class="iso-frame" viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- ===== TOP FACE (only the back-top slanted line — no front-top edge) ===== -->
+        <!-- Back-top edge going right -->
+        <line x1="60" y1="5" x2="260" y2="5" />
+        <!-- Top-left connection (front-top to back-top) -->
+        <line x1="20" y1="30" x2="60" y2="5" />
 
-      <!-- ===== LEFT SIDE (front + back verticals) ===== -->
-      <!-- Front-left vertical edge -->
-      <line x1="20" y1="30" x2="20" y2="150" />
-      <!-- Back-left vertical edge -->
-      <line x1="60" y1="5" x2="60" y2="125" />
+        <!-- ===== LEFT SIDE (front + back verticals) ===== -->
+        <!-- Front-left vertical edge -->
+        <line x1="20" y1="30" x2="20" y2="150" />
+        <!-- Back-left vertical edge -->
+        <line x1="60" y1="5" x2="60" y2="125" />
 
-      <!-- ===== BOTTOM FACE ===== -->
-      <!-- Bottom-left connection (front-bottom to back-bottom) -->
-      <line x1="20" y1="150" x2="60" y2="125" />
-      <!-- Front-bottom edge going right (shorter) -->
-      <line x1="20" y1="150" x2="240" y2="150" />
-      <!-- Back-bottom edge going right (shorter) -->
-      <line x1="60" y1="125" x2="260" y2="125" />
-      <!-- Bottom-right connection (closes the bottom face) -->
-      <line x1="240" y1="150" x2="260" y2="125" />
-    </svg>
-    <div class="iso-name-text">
-      <h1>Alex Pham</h1>
-      <div class="subtitle">What is inside the "black box"?</div>
-    </div>
-  </div>
-</section>
-
-<section class="hero">
-  <div class="hero-content">
-    <div class="hero-photo-col">
-      <img src="your-photo.jpg" alt="Alex Pham" class="hero-photo" style="object-fit:cover;" />
-      <div class="photo-titles">
-        <p class="pt-role">Management Researcher</p>
-        <p>PhD Student, Bernard M. and Ruth R. Bass Center for Leadership Studies, School of Management, Binghamton University.</p>
-        <p>Former Media Content Acquisition Strategist</p>
+        <!-- ===== BOTTOM FACE ===== -->
+        <!-- Bottom-left connection (front-bottom to back-bottom) -->
+        <line x1="20" y1="150" x2="60" y2="125" />
+        <!-- Front-bottom edge going right (shorter) -->
+        <line x1="20" y1="150" x2="240" y2="150" />
+        <!-- Back-bottom edge going right (shorter) -->
+        <line x1="60" y1="125" x2="260" y2="125" />
+        <!-- Bottom-right connection (closes the bottom face) -->
+        <line x1="240" y1="150" x2="260" y2="125" />
+      </svg>
+      <div class="iso-name-text">
+        <h1>Alex Pham</h1>
+        <div class="subtitle">What is inside the "black box"?</div>
       </div>
     </div>
+
+    <!-- ============================================================
+         [EDIT: 3D BADGE] — interactive lanyard badge (badge.js)
+         Name + slogan come from the name box above.
+         Everything else on the card is set right here:
+           data-role  → small heading at the top of the card
+           data-photo → photo on the card
+           data-org / data-dept → the two lines under the name
+           data-site  → footer of the card
+         If 3D isn't supported, the classic name box shows instead.
+         ============================================================ -->
+    <div id="badge-3d"
+         data-role="Management Researcher"
+         data-photo="your-photo.jpg"
+         data-org="Binghamton University"
+         data-dept="Bass Center for Leadership Studies · School of Management"
+         data-site="alexhoanganpham.com"
+         aria-hidden="true"></div>
+    <p class="badge-hint" aria-hidden="true">Grab the badge &amp; give it a fling</p>
+  </div>
 
     <div class="hero-bio">
       <p>
@@ -141,12 +154,14 @@
         Alongside my work in management, I remain interested in developments in science and technology and try to keep up with research across different fields. In my spare time, I also enjoy songwriting and have a growing interest in fashion.
       </p>
     </div>
-  </div>
 </section>
 
 <footer>
   <p>© Alex Pham · <a href="mailto:me@alexhoanganpham.com">me@alexhoanganpham.com</a></p>
 </footer>
+
+<!-- ===== Interactive 3D badge (React Three Fiber + Rapier) ===== -->
+<script src="badge.js" defer></script>
 
 <!-- ===== Starry-night animation for the name/slogan banner ===== -->
 <script>
