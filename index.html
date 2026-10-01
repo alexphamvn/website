@@ -21,6 +21,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="style.css" />
+<!-- lets the CSS hide the old name box before the page draws (no flash) -->
+<script>document.documentElement.classList.add("js")</script>
 </head>
 <body class="home">
 
@@ -82,18 +84,23 @@
     <!-- ============================================================
          [EDIT: 3D BADGE] — interactive lanyard badge (badge.js)
          Name + slogan come from the name box above.
-         Everything else on the card is set right here:
-           data-role  → small heading at the top of the card
-           data-photo → photo on the card
-           data-org / data-dept → the two lines under the name
-           data-site  → footer of the card
+         Everything else on the card is set right here (top → bottom):
+           data-photo   → photo
+           data-role    → title under your name
+           data-former  → line under the title
+           data-org     → university
+           data-school  → school
+           data-center  → centre
+           data-site    → website at the bottom
          If 3D isn't supported, the classic name box shows instead.
          ============================================================ -->
     <div id="badge-3d"
-         data-role="Management Researcher"
          data-photo="your-photo.jpg"
+         data-role="Management Researcher"
+         data-former="Former Media Content Acquisition Strategist"
          data-org="Binghamton University"
-         data-dept="Bass Center for Leadership Studies · School of Management"
+         data-school="School of Management"
+         data-center="Bernard M. and Ruth R. Bass Center for Leadership Studies"
          data-site="alexhoanganpham.com"
          aria-hidden="true"></div>
     <p class="badge-hint" aria-hidden="true">Grab the badge &amp; give it a fling</p>

@@ -184,9 +184,14 @@ section.hero-sky {
   position: absolute;
   inset: 0;
   z-index: 2;
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
-/* keep the name in the page for search engines + screen readers */
-section.hero-sky.has-badge .iso-name-block {
+section.hero-sky.has-badge #badge-3d { opacity: 1; }
+/* The classic name box is hidden from the first paint (no flash) but kept
+   in the page for search engines + screen readers. It only appears if the
+   3D badge can't run (badge.js adds .badge-failed) or JavaScript is off. */
+html.js section.hero-sky:not(.badge-failed) .iso-name-block {
   position: absolute;
   width: 1px; height: 1px;
   overflow: hidden;
