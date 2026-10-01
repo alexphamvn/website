@@ -460,6 +460,61 @@ section.content.dark  { background: var(--bg-dark);  color: var(--text-light); }
 }
 
 /* ============================================================
+   RESEARCH PAGE — black like the nav bar, particle figure in the
+   centre, papers on both sides (figure drawn by research.js)
+   ============================================================ */
+body.research-page { background: #000; color: var(--text-light); }
+body.research-page footer { background: #000; }
+
+section.research-stage {
+  padding: 4rem 3rem 3rem;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+section.research-stage .section-title { text-align: center; position: relative; z-index: 1; }
+
+.research-grid {
+  display: grid;
+  grid-template-columns: 1fr minmax(320px, 36%) 1fr;  /* figure column width */
+  gap: 2.5rem;
+  align-items: start;
+}
+.research-figure-col {
+  position: sticky;
+  top: 60px;                        /* height of the nav bar */
+  height: calc(100vh - 60px);
+  min-height: 480px;
+  max-height: 900px;
+  margin-top: -7.5rem;              /* lift the figure so it sits mid-screen */
+}
+.research-side { position: relative; z-index: 1; }
+#research-figure {
+  position: absolute;
+  inset: 0;
+}
+.research-side .section-subtitle { margin-top: 0; }
+.research-side .pub-list + .section-subtitle { margin-top: 3.5rem; }
+.research-side .pub-title { color: var(--text-light); }
+.research-side .pub-authors { color: rgba(245,246,248,0.8); }
+
+/* left side mirrors toward the figure: text right-aligned, number on the right */
+.research-left { text-align: right; }
+.research-left .pub { grid-template-columns: 1fr 44px; }
+.research-left .pub-num { order: 2; text-align: left; }
+.research-right .pub { grid-template-columns: 44px 1fr; }
+
+section.research-stage .footnote { text-align: center; margin-top: 3rem; }
+
+@media (max-width: 1000px) {
+  section.research-stage { padding: 2.5rem 1.5rem 2rem; }
+  .research-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .research-figure-col { position: relative; top: auto; order: -1; height: 60vh; min-height: 340px; max-height: 520px; margin-top: -1.5rem; }
+  .research-left { text-align: left; }
+  .research-left .pub { grid-template-columns: 44px 1fr; }
+  .research-left .pub-num { order: 0; }
+}
+
+/* ============================================================
    TEACHING SECTION
    ============================================================ */
 .teaching-row {
