@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>MGMT 111 Post-Experiment Form</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: one narrow left-aligned column; one card per step (announcement, code, Zoom, guidelines). */
+:root {
+  --bg: #f2f5f4;
+  --surface: #ffffff;
+  --ink: #14201c;
+  --muted: #56675f;
+  --line: #d3dcd8;
+  --accent: #0f6b52;
+  --accent-ink: #ffffff;
+  --accent-soft: #e3f1ec;
+  --solo: #8a4b08;
+  --solo-soft: #fbeedb;
+  --danger: #a8261d;
+  --font-display: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1412;
+    --surface: #151f1c;
+    --ink: #e4ede9;
+    --muted: #9aaca4;
+    --line: #2b3a35;
+    --accent: #52c49e;
+    --accent-ink: #062219;
+    --accent-soft: #1a3029;
+    --solo: #f2b56b;
+    --solo-soft: #33260f;
+    --danger: #ff8f84;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d1412;
+  --surface: #151f1c;
+  --ink: #e4ede9;
+  --muted: #9aaca4;
+  --line: #2b3a35;
+  --accent: #52c49e;
+  --accent-ink: #062219;
+  --accent-soft: #1a3029;
+  --solo: #f2b56b;
+  --solo-soft: #33260f;
+  --danger: #ff8f84;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 48px 20px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.eyebrow {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0;
+}
+h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(28px, 5vw, 36px);
+  line-height: 1.15;
+  margin: 6px 0 0;
+  text-wrap: balance;
+}
+h1:focus { outline: none; }
+.lede { margin: 10px 0 0; color: var(--muted); max-width: 60ch; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.card > p { margin: 0; max-width: 62ch; }
+.callout {
+  border-left: 4px solid var(--solo);
+  background: var(--solo-soft);
+  border-radius: 0 10px 10px 0;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.callout p { margin: 0; }
+.callout strong { color: var(--solo); }
+ol.howto { margin: 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 4px; }
+.check {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg);
+  font-weight: 600;
+  cursor: pointer;
+}
+.check input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--accent); flex: none; cursor: pointer; }
+.check.is-locked { opacity: 0.55; cursor: not-allowed; }
+.check.is-locked input { cursor: not-allowed; }
+.check:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+.check:has(input:focus-visible) { outline: 3px solid var(--accent-soft); outline-offset: 2px; }
+form { display: flex; flex-direction: column; gap: 14px; }
+label.field { font-weight: 600; font-size: 15px; }
+.row { display: flex; gap: 12px; flex-wrap: wrap; }
+#code {
+  flex: 1 1 300px;
+  min-width: 0;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 12px 14px;
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--ink);
+}
+#code::placeholder { color: var(--muted); opacity: 0.5; }
+#code:focus-visible { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+button, .btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.primary, .btn {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border: 2px solid var(--accent);
+  padding: 12px 22px;
+  align-self: flex-start;
+}
+.primary:disabled { opacity: 0.45; cursor: not-allowed; }
+.primary.busy { cursor: progress; }
+.btn-zoom { font-size: 17px; padding: 14px 24px; }
+.ghost {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--line);
+  padding: 8px 14px;
+  font-size: 14px;
+}
+button:focus-visible, .btn:focus-visible { outline: 3px solid var(--accent-soft); outline-offset: 2px; }
+.hint { margin: 0; font-size: 14px; color: var(--muted); }
+.hint:empty { display: none; }
+.error { margin: 0; font-size: 15px; color: var(--danger); font-weight: 500; }
+.error:empty { display: none; }
+.opened { margin: 0; font-size: 14px; color: var(--accent); font-weight: 600; }
+.teambar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+.chip {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+.teambar .label { font-size: 14px; color: var(--muted); margin-right: 8px; }
+.guidelines { max-width: 65ch; }
+.guidelines h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 1.25;
+  margin: 22px 0 8px;
+  text-wrap: balance;
+}
+.guidelines h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  margin: 22px 0 6px;
+  text-wrap: balance;
+}
+.guidelines p { margin: 0 0 12px; }
+.guidelines ul, .guidelines ol { margin: 0 0 12px; padding-left: 1.4em; display: flex; flex-direction: column; gap: 4px; }
+.guidelines .notice {
+  font-weight: 600;
+  color: var(--solo);
+  background: var(--solo-soft);
+  border-left: 4px solid var(--solo);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+  margin-top: 4px;
+}
+.table-wrap { overflow-x: auto; margin: 0 0 14px; }
+.guidelines table { border-collapse: collapse; width: 100%; font-size: 15px; font-variant-numeric: tabular-nums; }
+.guidelines th, .guidelines td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; }
+.guidelines thead th { font-size: 13px; color: var(--muted); font-weight: 600; border-bottom-width: 2px; }
+.guidelines tbody th { font-weight: 500; }
+.guidelines tfoot th, .guidelines tfoot td { font-weight: 700; border-bottom: none; }
+.guidelines .num { text-align: right; white-space: nowrap; }
+footer { font-size: 14px; color: var(--muted); }
+[hidden] { display: none !important; }
+@media (max-width: 420px) {
+  .wrap { padding-top: 32px; }
+  .card { padding: 20px; }
+  #code { font-size: 17px; }
+  .primary, .btn { align-self: stretch; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .card:not([hidden]) { animation: rise 200ms ease-out; }
+  @keyframes rise { from { transform: translateY(6px); } to { transform: none; } }
+}
+.done-mark {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--accent-soft); color: var(--accent);
+  display: grid; place-items: center;
+  font-size: 26px; font-weight: 700;
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <p class="eyebrow">MGMT 111 · Intro to Decision Making</p>
+    <h1 id="title" tabindex="-1">Post-experiment form</h1>
+    <p class="lede" id="lede">You've finished the exercise. Type your team's access code to continue.</p>
+  </header>
+
+  <!-- Step 1: access code -->
+  <section class="card" id="step-code">
+    <form id="entry" autocomplete="off" novalidate>
+      <label class="field" for="code">Access code</label>
+      <div class="row">
+        <input id="code" name="code" type="text" inputmode="text" maxlength="30" placeholder="NL-XXXX-XXXX-XXXX-XXXX"
+               autocapitalize="characters" autocorrect="off" spellcheck="false" aria-describedby="hint err">
+        <button class="primary" id="go" type="submit">Continue</button>
+      </div>
+      <p class="error" id="err" role="alert"></p>
+      <p class="hint" id="hint">Use the same access code you used for the exercise. It starts with NL.</p>
+    </form>
+  </section>
+
+  <!-- Consenting dyads: sent to Qualtrics -->
+  <section class="card" id="step-survey" hidden>
+    <p>Opening the post-experiment form…</p>
+    <a class="btn" id="survey-link" href="#">Open the post-experiment form</a>
+    <p class="hint">If the form doesn't open by itself, click the button.</p>
+  </section>
+
+  <!-- Everyone else: confirm, then thank you -->
+  <section class="card" id="step-confirm" hidden>
+    <p>Click the button below to confirm your team's submission.</p>
+    <button class="primary" id="confirm" type="button">Confirm my submission</button>
+  </section>
+
+  <section class="card" id="step-thanks" hidden>
+    <div class="done-mark" aria-hidden="true">✓</div>
+    <p>Your submission is confirmed. Thank you for taking part in this exercise.</p>
+    <p class="hint">You can close this page now.</p>
+  </section>
+
+  <footer>Problem with your code? Ask your instructor.</footer>
+</main>
+
+<script>
+const DATA = {"salt":"zdyUwz70XlJlnFgsnv4isQ==","iter":210000,"entries":{"00edeeacbcd3eb77fa272f4f425c0bea":{"iv":"m3ZYY/JcMWA3RN5Z","ct":"8Pe97V/wYxL6T0Y/1Z1RV3TKDJCym6bX9A=="},"058b795e57c7ad32e07ebaa21ee43d19":{"iv":"8APjA/neXYvvEKMz","ct":"GOONjQyVmHTpzEcAO18f1AtjU+mcOoSAAkesk3zOb6YqN2j8/L3f9ZXCpd+ercBsX2WE3CAKliQ9FepKim+wumvbcbgRFv7EY46yswoUb5zAu5nY/g=="},"0871682c58818d46d3f90af940ae73a9":{"iv":"FB5ZpLv9kVVhI9s4","ct":"m301xHgsO6Sk6RfDE0LN1a7OPfYCzO/0BQ=="},"08bf643d30ed4d13880605512d3b4966":{"iv":"9rbF2YJZ/5JLzoIn","ct":"yzo2vivvg39e3+9shnMnwfa7P52dg1hWxA=="},"097992ddf2b57c1e65adf46140cd258d":{"iv":"sqCvKcVfDZlOaKfU","ct":"JV6apWvRJHNFcBQPlh200mxj++0Oa7rJ7sq34h5oBQXb4s7D72m2xNlfKr1Yrk4p+GM02VVJWMdvdh/n07VRsrCydyNEzj4a9gNjKpnqTl1mp4t1FA=="},"09bcc1a99249064e97b4da00e0499e3c":{"iv":"uUt6gP/nk/aL9s7U","ct":"t9RmpP+hKdmXm4FWHFRslNmKsZs72c6uNQ=="},"0b08716390a68bc02579232c80125251":{"iv":"yb8o9D370PTRqTMg","ct":"E64DB3oBEZ3hJ52rbaXCFFOd8yITzTciZw=="},"0f8c88a4dfbca361a75bc598f9d2f1d9":{"iv":"J4drZ0uzjn9DV5LL","ct":"c+kgGd9NcCW8bAN9DwMP0UFgJFYJw33Pgg=="},"0fc80a4ca78166b10190b37416f8d5c8":{"iv":"0T+1aLQr9UtCldSP","ct":"aTk1YU/uI20TqVqixBDDsLugppoM1PvgzA=="},"17231b798e124bcbba80c1e599f4d63f":{"iv":"GBEcXQGj8LV+/+XY","ct":"X5CkTVLQ0taCB2TIkDZAIegQqHhp395ltg=="},"194f5bffba877224f3a420d0e58253aa":{"iv":"ZpnuVSFG3h8/WDS3","ct":"5p/lMQr1Aw/TvKxasAOi+umqtpdeLtKUEA=="},"1af84c4f217934d4490162517637490a":{"iv":"6Es6YUzwC/ZQjIyL","ct":"/aXJZege2CDaYGuxadvo62H7mbfXzyA4yR7dXr3c0kAM9jFiFfZwFKml6vAGdmQGRvCLtcBiyPw7eedrlj5FjhExIGZtueKjT9yO8O9hRsItMBCuvg=="},"1b2b2f7eeb46e7d6b6604949ac7ea14f":{"iv":"MXLgWuR8EqCOGD3g","ct":"ylhWQ9RYT8zKQ3j4Rn3UmYTlSienTvCmATSawOz41R5PIP7zGQ5E+sJ2g5giWjKu/jNzQOOS0E2jXt/FwsnYeW7Q0B8uKkX0YtyABkTcW8IJx2M7mQ=="},"1e32c5309fb5ca2f555611c9529a1ddb":{"iv":"SHLqnLBm/2YStuP6","ct":"FCceCG81RguucmI0Ku5aZ1tiN2SqFSdPYA=="},"221d7fabc835d7c468c09d8c55a65ad9":{"iv":"75xXO+OkMelTUtnl","ct":"i2rcgPwRgNvLxXy+AdsIaaqrbdBeJpiaxw=="},"23c5173d712f8bf95f320129c3b07dde":{"iv":"Fmye5eupkljgFHBV","ct":"8lW8z7SNcIKFmbTTQVwlF+QYRW0o1SjqpA=="},"248becbd103e10066fbe3e7d441cdf26":{"iv":"If/LcTaBCIB65X/n","ct":"lsWRlwfSRnLxWS4XeJ4xFdQObg5s6f8aMIIGK9III71FKDoFfOGyc/BwTbQjIrwPmezMcriThyEH21xSGELXSl+L0SHL5ZhV22g3eZ7YDjXo0Tc00g=="},"29c1cceeb9e8e08f0cf249233436e22c":{"iv":"lRdjs3C97AtHg/ES","ct":"DVCTD0BOqoNTVhRTwk6zP2rqcZQ9GoKqMA=="},"2a19390957c61919e83d969019a5801c":{"iv":"eMtRBfugmmQjpO5o","ct":"4+xKB9Lc3HN+msIMiJ0fmvc3MpbFFJUscoBLTiRxR5wsNboxlUfGw3qc1QitI++ROc9stAT4dNkYw3m7z79lv9vGhtWKjjINTEXZKvP/TZ6/Faxu3Q=="},"2c4e1efc47a29785f306737ce0ca1928":{"iv":"4j0dcWAxbv8gzIvJ","ct":"H3t7S7MkxKmSWZz2tYrT7bOmg+pw98lIIg=="},"2ebc9710f2b5af98162067cd9386796a":{"iv":"8lgEAYSCcIVc5aeV","ct":"7ypVJY/o32xrrGHJjXE+Jhw2zyutchmNEg=="},"2f4975e112375406a4a76ae8e5f3caa3":{"iv":"6kcz0C4GH3mx2NMO","ct":"I9t+/lOkv/FOST2D3+FuanTRIjXnimULMA=="},"2fa09b229315c7d1653779019746bb20":{"iv":"zPRs8JqIVm/KMGNj","ct":"5r8KZsYE4xFzCQRvXjUbJlUd8r1K6uowYg=="},"30fbd6a8a1361e46d364582165be554d":{"iv":"4mvynuz3r/kFwrzU","ct":"jJyTAtb0vl+oEAR6K1heNf/qImSKgBBzqiPLucKo/pGTrYqs6mfn/9SbdkWPxYnqKKwwcgw0etatD7UJYxaCvEdBk+qPydBrV26/Ys1U16t+CZIBIw=="},"35d48a2972377943c70249d5faea08ea":{"iv":"QU4dgjWVSnd1Nxgw","ct":"UOYyhT/sWj5fGN+xiDEGSmMrXEqoWe52toJY0waljDCvdwg7OTtBKTCjkp9BOu8JTHq+JNuYTzuh5JZNFU5jGw3q2ZZqKaggk/Mn2e3dQlIEcMdggQ=="},"3697de9a8d7c7f7be73afac754049e1d":{"iv":"7XfNjRGlqz4Idt8J","ct":"V/nAYKlSTe1wvEIZlfWMn1prS5EFrwMy8A=="},"36f1bb325166e8739dd54a1fae901c52":{"iv":"6syWfqau/FXb/0AZ","ct":"v0kLhzy59pPksu+BONVuPX65zJt4htMZ7g=="},"377eb75eb9f30bb24d20c5b240007983":{"iv":"AyEC4JmXyt7W+d2v","ct":"OxCsAF0znISuOyj3LMTgPLJWHCoMOsjp8nxo0AqCiHTNdwBiaxylzwnW7fX5DseSskSwHNc90lyMHhrHnJrV6lDUS5mQnHawmXbMmj9LhlvsghXUEg=="},"3b34b30a23d06122b61ecae1052532de":{"iv":"pNMKXUcGzcnDRLnh","ct":"pee/v/kCHTtDnwFJ4wFhMvrHj8I6SR6I7A=="},"3b653fa52e3cb77025b8ac01e90d132c":{"iv":"HANbHRc/A/7VsLom","ct":"gv91jeho1AlziQ1x1EjavaUJNtjZN3ru5lTO9UVWvPTCpoEaK89wJFXyilfBqIwJt6eiF/QJEvLICo4o/Xo4p6vjHx5cS9waxzjRa/x9gjjc6lERdA=="},"3c4933b57e9fb4df90ee50ef35eaa4f8":{"iv":"ud9T+Kvz8ALAgehX","ct":"H7oZUnAJTwpDu7sQnfGg209pyWr4wshpAjsfAJlnJQ5BghtExocjLGTRC+w8jRUp9k6FQjAbBYamm1OZKiB8uVmjXQQyXGiooerrKCrfbPz2XZ2w/A=="},"3f617dac64d0ebf46056324632e7ebd9":{"iv":"l4ARxcfVohdECeMK","ct":"Zm0GJJEup9yuDks4uaRyiW75oMQvKwU0/g=="},"419fbbfd0f6519498e03f139b4a92692":{"iv":"/4jDpZrsd4v/721m","ct":"qYHXXW4RjmyYSgSyk58koYzKFm/XbN9s3Q=="},"43b3b0030c2ca19bf6f2acc96688b52a":{"iv":"S6vCeLzFcBhDelRx","ct":"8RB7T51nveAhpqAYGmzpNDkwKu/jqeRpfULFxEE0vfkPTCrbu4zOfR+1KeMHv7PdODCreAYjz7oHz3su25W0zkaAW6Q7XzJkPDDmg6Kf5kpnXoqBGg=="},"44e14067bd60dbb2d1a95b33db25f9ee":{"iv":"GJfWOEifvSm/YcXr","ct":"m6Qaw3HsC8uMjrnKc4EbNGRZb6OdmoV/Lw=="},"4a7ee3648ef7dd3de89aaf8e69356f57":{"iv":"Hj8neKlGJIUBK2lb","ct":"xRdQsOguHtmFgyc5Ne8dBkbWFqBUHNxKbg=="},"4f9b306a3e8eed231a8c11e5f692fa03":{"iv":"waXgqhkfn1f7yXik","ct":"AvY6FlIX1FcJ+bbiom6mQKKNOzhiinMPcg=="},"505ef871893a761b9377cc67a6ac5fa4":{"iv":"WumprKMz9VX/E4G/","ct":"s3FtBns5fB67zvs3rRJZ1i6K/CkSg1gylg=="},"53618f5c94287df457f7a03261afa661":{"iv":"pKm/qGqqmvPNEdzu","ct":"GRbkIWPL75GTlHkd+aTT0wPRA5A8qEsxDw=="},"55aa659281297475cc52d0806ff04de3":{"iv":"ztras5XdFlCM7CGv","ct":"KZsdA5D/70iG8LPIMR7rb1aB59SLPb03kg=="},"56f185abca985d843af8f179d36aa84c":{"iv":"8tD4AgfqahVhiGXY","ct":"559LTZixzF6c4VI32LvWwXzzhW0ueHWi2Q=="},"5a063264f19b071ebe620346580be63f":{"iv":"lQY34KIeTm/WD9lp","ct":"6pOCkm8IIbY387H6Bf5IpdAKKwfDJKSjxdTG7sGdqc0H/7lDdqiJXhWia+Kq3U6vxcS/AnHIAybiwYDLAGkXlRXaxlh8n0yT9vQlMeLOxPvqBauQ6A=="},"5a29150c70bb9cffca6af9131b26c108":{"iv":"6WrUF1uMGPJWDesY","ct":"+Bwad6XgraFylyXQuC0U/tk2vXW0Uy4n35VChcD6FNrjjbHVOZfdd8YIceWiUOlDRkXcvzr8eM5y5MEK9vb3cusHd3Hyp4Pdhep1yx+N7v/lDYcBMg=="},"5c3990961b720828ffb753777eaec10e":{"iv":"zW39HKPAzWd3Uu2J","ct":"t+Ltp4ELtldCR6GtFnhOADlYldQqgfeWWA=="},"5c65489292793351e07ad8bf12e33e3a":{"iv":"L9Q1zQ+a4WuPVKK2","ct":"I/HVAulicXZ4A16/dM1VV4ETd4YG0IGUJ3JObVV4hO3A/qERF9KY9l1H4zeKLnc43RGDv3xI1f7uCv1MYM85n2WjQ9uJFxjyPbVlSH5/930LsmUoPg=="},"5e75d90e8b628a475fdab6809f91833a":{"iv":"GCpU9OqdCpV9tFCf","ct":"+gf6AO5A8BonK6me5HsVARtEMthJy1kOBg=="},"6056bf570b01c5802a91dd559c77f87d":{"iv":"GQFyKh6dnTYa6CoG","ct":"P1bLUVQ5fMu099cF/n/Y3d4EC3OhGPujOw=="},"653a12dfe2bc8a2e4dd64010ceb453d0":{"iv":"R5cnvT5gQFk+08F5","ct":"hskXft2NLhcqsjYqmHHBl7vjpf+Jk0VOyg=="},"6780e6c0d2e46e6af2c80f3ef3194b65":{"iv":"PxrNZDzITtKAfP4A","ct":"LrNwCY4a2UotLm9N0j9Lfl8hJ9iqRT1DAA=="},"693a88afbffaa52d36d0e2e09457ad8e":{"iv":"SfE06Zquh03tkizI","ct":"1rrNgSvYhtN10cegmh/9hY+86g4mOKpRbA=="},"6e929e489b2e5b746165e94c12a6280d":{"iv":"KFx3tyJe0Mpy/5dE","ct":"xAospG5PchjsobMQ6ExR05UR9HXLI19EHndAYIpBJHUDZrt+SSODPHLCY5MVoYMqMqhZPzdaD2mUdKfmEwSewCsyy/J3fcjG3hRbuIkhDZStDGWNPg=="},"6f27aeb388c162739cd61c52ab3e968b":{"iv":"7DGz11YstQywxh8G","ct":"0AIRRiaS5JXEno2TDHstDoflIIfT9dEtKGBaxcG0PEq6TKrzMYl7f217oS1UFLpzn2PxEQy29MniZw0ItwBWLOqfMswlSBsAsf91+BMIt3toR+fBUQ=="},"729ee501083892faf3ce3f03b4c173b1":{"iv":"m2BR0TqfO4ePMEbT","ct":"wFeqHa/k3r/WedYjSEB5W5AohT4jcbDlXg=="},"767370ee248d0cf0b1a05d023256bfc2":{"iv":"jQwxCwIAC8BT5avg","ct":"dgmqfREz/iWzgM4PEQLmr4qOVlpvjfYbRQ=="},"77e02440c3f98aa85d2900e2db127a66":{"iv":"j0lnSYGQ8ZnrNhc9","ct":"eNNG+h1OD7eHfuBYhJK16qQJcVjHQdpA7bh4JVQFmHVEs63UH4ezJ84GLZMYpIUbu5UzpTqOV+qjIn/yZ16AvS4FABx38IUoT7Z7l0YjbuyOR/r6lA=="},"78173ac5fcdf36846e6a8dbefd187f83":{"iv":"h3x+t49Zk7ZDOT8X","ct":"SpwVRcQWdIl07dMSvc07BVzSx5itpON1pplo1h9thaRRwBmhFRufNHoYhKoNY1xSelE5WWqym7LFdYarfeOJcl/8kJVvOs/0KtL8UK/Qvi0VOZvmbA=="},"798f47525505e665ebb008a3cea12b8e":{"iv":"LaxPtGGJd+tBQMPU","ct":"AfiNzJCHdfwfJHqO/kEhnvLhR+LoKOuSYA=="},"7a8600a4da509487dbc21f8a18b0a447":{"iv":"vzahTDwYEaxmbSyj","ct":"1RmzJdhbO/sm1Aw+Gu43DNGUx8tvdDFqTQ=="},"7d75efb61461edb287fc41ae471e06d7":{"iv":"NqSNwOfuF+k3F4s2","ct":"HKlG+QbaC+5z4J/1HODNzGA3xc7GuixDytJKysPdz3chmZZpa9lLktq2xuHz4YSxEefxE41sZNfkfzmmpiDKOgoHnH+Pkr2cca4mgbziXoDWjr30gg=="},"7ebfc3f9847266da7ccbd5d07fb106d0":{"iv":"5Gh/YY/yX8wCygWq","ct":"fToQKDOyj+W3dgO1ESE+98PfRnihkcUVkQ=="},"815585400267b75fc6a906922c50d35f":{"iv":"mtNP6lywnoYnQAkn","ct":"TFdsfDYE68xx0Vk7/XpYaJgNkYIP4P6h3Q=="},"8356aeb48cfaa05e894310615b37a058":{"iv":"0G9hHczRSb2il5MH","ct":"bnkn3XOPt53Q2K45koJvy3rOG5mGeyz1cd1X6JUGVkF7x0yIxdsquJdaN1sAOMkGXXxQ/cWkHEeziDwvfxBKv3nAMsTfpgrAR05ploPzxnhOVJXeyw=="},"859a9633823dc137ea15c61ff6ad8e11":{"iv":"REdyKtLNRokPhMlr","ct":"Ev4JgIF60w/qHv1cq57cvcqU02Vu7FCQT6jt5WEZnLVM/0sg6eA3a1kD5aVzhwTT+M7oSlFhv3iJYkSgXmCv39q5OtotWB1X3XQeikPGUvFv1S+uhA=="},"88242e405797cdfeb8a455ffaa7763b0":{"iv":"pGFzbSJJBTGv1+rJ","ct":"L2Ya4F6hkb/ViEZFi63aSn3dXE4ZeWRXuQ=="},"8838f1d7704bdf8cecd01bb0447b7842":{"iv":"Y2GtH0G8VtipLi62","ct":"0xosWzr5fQdkIL1Zzd9qboTecQ6dUXV7yf3x1haiXc2cc+s1ueEbOlGqyaLTXsmDsFIzcquB+rhqmz9eD3G3rETRp7jHrzzzhQlefEhA29y2FWPj6Q=="},"898de7ca190dabcca60bb495c8efe1ea":{"iv":"sIZxFicK4EmDARQY","ct":"snuk2NJU0uaH4mI32RapmZy5IPdnzO8OqQ=="},"8adb3e23f60e781a129be755b49d9055":{"iv":"/UWIA8ZnePiua+br","ct":"2eTamhnTYbU0mkzQE7cACuEGmfHH/yONwA=="},"8bc6a8d7a2dcb1728374b648e4c40b05":{"iv":"YoXbBgIwKudgyNSt","ct":"X3r+f8RU6BYjbG3b7az8MB50dGYTd/GsPQ=="},"8bd1016b76b1b3483b50d7c9b84b4f98":{"iv":"bWx80V0xBMm00hJl","ct":"56t3auXZ3NWwoz5q/29LlcnChwoZ79aolKT6zfU16HGZ5aqFsiNxbILfID8RgMQjWhTEKueYhhghpdPQ5h0Jd0mQ20dyBhiHYSzI+hclbYAgOTm84A=="},"8e8043f8590ec48fc0e64dc669987047":{"iv":"U6l5zDjr2ITXFBVF","ct":"txyvRIvVSdSvwcMUfbeO+9bC2y7OYbddQT7VJeWRFZzzv/ptUhAOrA2B9NRbLKtqyv6EIBnohwHvxLfoonvazttoDudN+B+wG9C8J5JTF645PgVEQw=="},"8f05114614cf9259fe88704bc076858f":{"iv":"7O6R+7lwPEwyiopq","ct":"3NjFpRWwNvSkxnfXIhT+qT6xFS3pLwmXzA=="},"91d6ca3c9215af30bd7bc3daa9733f98":{"iv":"DHvqhSCHb1lKU3ul","ct":"Q2u59uY8Ie/D3vadHs9r33ZXkIgzLDJElhW+Z/j3NzrWelWzAGfZr0o5Cg/KAK2giqC/F+qQR+jtO7ONxJj4oh+TpLe/k2k/HaQBBxUKUeS0G3Uzbw=="},"93ef294f419ebd12d37372b53ba91a79":{"iv":"sGoqe1bUm5Q9D8al","ct":"/OvkRaLj1PTdwYGtbohvRdMudvpBa10PTmcxbLVvhfct/jXjLnqFOCp2PunoEeVCLlZkpE8nopmhOTXGF6TgIrNZuov2MqlEB4BkOxuqh7+uluHSOA=="},"9611d6ed781a53deeb9d7495eb506188":{"iv":"Pe2RVLo0oClQKoz3","ct":"S4Chxz8gDgwS/mIyPwlfzcOhibkTMWLcq3DkQ/LwHNZETqY1HLbkk6CHzJkiDLFoW6lSuUcziCh0lBEluZOKBnwsU3ZjJFKHdihe+8/IzA34Sr2a5A=="},"973428801073f3ad2fea8d7377f6c260":{"iv":"/1SnstUSs2PGgC4T","ct":"pfVs8xz+XYqNMgsCneeYUhHlgCwbfmI8Lw=="},"975599162df0f804193a9d99defffd10":{"iv":"L1o/CU4pHRc2H0eC","ct":"Isp6k0woWG3gNPADqikMx/iKXPb1MXGxXIBRGthQb4/tiXdN4WkEBdAshGH/fjoXrUp+KXZk9kAwTz1oGStT7CSG5RmEgvicoYW+wbIyKRjSF+WkcQ=="},"9e653cfa93565a4c000e69c6575db5cf":{"iv":"8zV9d5bkyTpb3xlZ","ct":"UUDngI3N9BvLf6UibLKIWKlkqQgIW8HeAqu1rH8kKa81vV7pj6HF8NPPdVS0AmbePTNyfTbw441CooDDd8nV2mSUDyyYjRN9Nr7D5uSJVbz/YH6tIg=="},"9f419343d74131f692fc066fa1d15b59":{"iv":"3SxmkcVDTHsAwR1e","ct":"X2zl/w5Vn7CqNNlzaD/TfX2rjmXCnfl2efaHWdtjdq9HB7zraEQNYgYjC/czj7cUBfaIQSQcZfmQ6lLQwp9DjmN8eIqnQygekRpzfeGU3C9Tv7JyoA=="},"a2879fe8d6225497049214ddea7def99":{"iv":"p5Pzo6sBDE5joL0s","ct":"8wu1JCs4SsAtFvklPU2sH5uolb+Q65qP6A=="},"a2e11aacd1041be7ec55ac1f1c28a40a":{"iv":"74SvXjF1oLPXUvvY","ct":"Ru89mV47cqhrYqSKRFlNviJfAlEatH4hFVy6HC8CO2fyJiPYXjG6nlYQFdwmsodmG/WY8S8cHBFJh79Ap/t2KQFD9Gw6gwfQJkOL3YUYWcVe1/PFOA=="},"a71f5442bfa604d97a63829171ac6b54":{"iv":"8uY+xt3l9FTTMTs6","ct":"l8a7UPUWlptTF4JxMSYYHGChaS2bzkI4dQ=="},"a7ab42b036943a36a3a1d84909fe90db":{"iv":"VGN5H1jAHwcdw77b","ct":"X2g0tRLqANilfa76R96wfv9gDWkTkJzPYw=="},"a84d924b8854112a5e687758364530bb":{"iv":"63RQy3+DP3UQ+PFX","ct":"xHTuVSvdNJUzj9tl/nCjND9VPsgi7N9b6g=="},"ab1729070eb1529b795c2bd2f192f570":{"iv":"RJaSscOUBpxaguIq","ct":"yidwAkkfsPEERNLKRFmeAKwpmFYG5ns4qQ=="},"ab3bbf12ae6109fccadae21247e3680f":{"iv":"5xkvwXtLvYscC1dF","ct":"QWaxzi9S2/5fduaeElLt8nMJN/b779s38A=="},"af4bd92dd8706d6f30395adcce95867a":{"iv":"ELIJ+04lfbbxSn1t","ct":"/xT6rK8619YzbEkTmFnySX+ObnX//cEWKA=="},"b01f0a17ab8acd0d3a98faea82a39f86":{"iv":"ofdf+XAYiDUvD5iZ","ct":"ndSIqytnUogvAzgtGifX7cSmpqY7xl3TfE/Xqd7/Yg1ps5HqQX6idFCi/OsVeh+Kcrhi/C4SHCrn52ePR2SX98om5U/PLu0IpfImSh/0LP0LgbZa9Q=="},"b09e7d2365bbf9f8b30d48b6426590c0":{"iv":"LWAcBU76cJAtk6CO","ct":"5+BB3ROlnlMHFlc0JS8nfgaUe51Dh1SSgw=="},"b3070040c8f157eecbb706d9a9b21cc2":{"iv":"Yyr0VxDRMQ3l6H/h","ct":"QwH/5Gu7V3+L9z5Tgqt4Wdf9WDeAsZC52w=="},"b3262d8ec3dcec3c56a8b1c652ecc344":{"iv":"ulBz9zg/jYyDKUWN","ct":"o/IFZtPYqmj9XQYmo/pWCY3O/i0KUUVBVA=="},"b531dd8c6cccadd4bc2fc53ba6f36aa7":{"iv":"8SGW64c/zAys/6LV","ct":"vi0uDt8XC0IXuZkdNS0PNDCtrRCq3TF9PQ=="},"b73336306dd03df8c221cee4beb14ced":{"iv":"WQyHT5d3uGpRoRSQ","ct":"FI4FQ8H1piOI2ECqwdXcs4zx6EbHM254JQ=="},"bbb99039358debf51e0569dfd3ac1829":{"iv":"quwYBBMad8qEekcg","ct":"Z2pYwFFP0SlIKW6fYBIBFeyHf3OTMrg/AQ=="},"bc279da6ede3d592e84176af2a097606":{"iv":"LOrr2JmWHBugeUnd","ct":"obT9+TOEkD/EF0RjCTQlhH7xVUjmkTTV8A=="},"be1fe9521cfab250873a257aed0fcf6f":{"iv":"aEoFaP+prbEDVpZ8","ct":"+QTRGr3U3ywZMBgy2JRJ0tlxzMfTARCTtg=="},"be36b83da61e1ac1b30de71d1cddeac9":{"iv":"ueoawlkk+JwRkdHg","ct":"0nR9gLJtagQWhHT8vUQkrmzIZ7OL+mt/EA=="},"c0f93c3f34a1ec517e0045d5966e7460":{"iv":"c1xyhl+403Q1vynq","ct":"3Kaj0TS9IvrEkrk4QyKdP1uveTQkwrAPFw=="},"c34911cbfb4d13fab5d24113a8b68074":{"iv":"W0es/iLHuOmeErP5","ct":"dESRa8Rt4pWB12WiMGhrONVrfPZoRpOX6w=="},"cff8561e2d24221243e0ea0c5249c263":{"iv":"GFY4JFS2mZUJBoTJ","ct":"FP5lSt0iGjFPgkyHL1hoQX31e/91spZ2wQ=="},"d3578507b9b7b4cafa4b52c7f79bcede":{"iv":"ZKbZMpfPbq+S0ZQm","ct":"MglGirlrrlTW2+/Uik8aPSYc5HCyWD94oKotptUkPwuPuD9mD5sYfQssYZGzJbZVeWCtjfIweMlEKGDPL96TIPcWf/Z0npYwTDLrlyIdWS2ntUDxqQ=="},"dbdc46fc85789b28eff34c76f2fbcee7":{"iv":"Xfn6cor1KB+3gnZS","ct":"S/rKX2I6OkCZWj+LdiOvSgN0Xqau4+CCQg=="},"defedf2fc8d876e6e464e100b4f49af6":{"iv":"t3FN4rPu5Rw/R41L","ct":"LNh1nBOgRZDH+kOOwynrgD921y9gpzr/0A=="},"e027e42ee53eae8e1538b9486d468cf8":{"iv":"LNc6KKXhT6G5MhIT","ct":"ghcKCUwnJCIqfCu4pTlpTzNvKqJ6qcbRFQ=="},"e03403c3b0679c141788bdbbd0e5760c":{"iv":"k6u23neIeuMEJNQP","ct":"nr9LLtQvNvtJBo843G9plcCdcTlnKMYY1A=="},"e31b6c3f901be28a66b57aeb8a7b6468":{"iv":"zmweke/26jNy2CcX","ct":"iCR6i3RjMqfzIYIYtWyUd3wsI5U7wpQr7A=="},"e7a561f01cc1970b08d022d52acec480":{"iv":"IesjsUXJptL7xFLU","ct":"CqxbUVcRc54t/0bM4fuHtf1v4FCrnvfTag=="},"e80daf9b744c6de0dd30ca5e897173c9":{"iv":"tTj1Crst7FSIBP2Y","ct":"nQ68BN6lX/ip1Zky2K6BTR2QQxnl7PqcKA=="},"e914b439d59460ea92df1c0a986fb82e":{"iv":"zpNc6hNs6YMVmWtS","ct":"qjBJvhWPE9qP8jAh/j5JXgEeLGYmnsUrESzgELHZF4ih+uj9JZrII1dva19vwI4utwlBVLmuA1HXhcyUjdOhxKpWL4DBitogwjzitRRlnJvinckvBg=="},"e9fc39b48bb938be534e452a39dfcd63":{"iv":"bsF4tVVFQgNC2pP4","ct":"11Gj4+v1kP4BF6fcuq6ZkIWQPGhhU3z2JQ=="},"ea57379040dc605cc505c884b0e975ef":{"iv":"H4qHancGPWypvY+e","ct":"5fLs8yXsWUbhFxM4aBLg68NL12j7b476EaqBudabDqjT+Vw7wUamIJP5N8Yr9ZVKwgyQTACFDWKfnvRaimFjQhImmpy3XdKMO8e+SDEB13vulehJhQ=="},"ef93bd6a62c0da07d0d6cbfad87e4889":{"iv":"ogdBRbxYi2PEy+vp","ct":"2/yBFGdEnNQbXpUtTkajzaqWusoSkLea0A=="},"f0bc6c8183e0b773a673b8f3674179c0":{"iv":"GPlP8Zg2SUdnCNag","ct":"GMFx1sW3dskv2juYRrAga0VqOgCUjUX+NA=="},"f29a4f356a2df64d4c40735fe4f2be68":{"iv":"wBuysQ6QlvQQ9af6","ct":"1JuhIIEMP9NX72gwwTrS8zEuH7rWLjGlmQ=="},"f38a73ed5d6c8d82d69887a650763774":{"iv":"/xTZIaKONNi+BZy5","ct":"FOqLvYlseszynp/JWdm5cgSSw3FSrVYh4w=="},"f4be88f660bfb6802f51b9f409098adc":{"iv":"vA+ztAZ/7iWJd0QN","ct":"d6p+u+OL+xIrNUy5KSKhyfX89WoqKPoNIA=="},"f4daf0fb9588d2825a2032faac8d5abc":{"iv":"DWGW5Zn1gtAhyi0U","ct":"rxtqSrFPVSb8C+Uz/mTLOKo/kvcu2uJS5w=="},"f5b4755cae53e2d3c5629ff0a65d02c5":{"iv":"L5mth0lFho7667rU","ct":"oXQ9E87EZmJBjO6C0qbpr17ETiOpih0BFg=="},"f8ddf5dc7b8e9994c32eaee97647d63e":{"iv":"K9SMX0K3zi85iz1V","ct":"Mo1NJx68C7Qq7NO3GV2D1iVqDJ50kgREz82/M2ZtwwvEozXdlBrsimQbvGKRHpZnDxyb4CtDzdJzmBsZ1VswVs5oeuQ1rNMZoK/DTpcAYrkOMIaA4Q=="},"f9b1ca62b1f466bb3d9154a661374eee":{"iv":"qB5hxSaOdM3NTWX+","ct":"JJEMUict9a1FkONlEp+UbsKqFMsnIaKP3w=="},"fe5adf00fac3debd7d9107a7d94ad9c7":{"iv":"L3Lm388MOsuXhUEb","ct":"dhVM2pNT6qa+hEVBZxlUqfTMhw2QplT8JbGkWoA7m2RdoKh4+6Ke4fHAxA9N2Tw0LWOQC26Y39NrLLgJzKMDB1YJDQjpBBpS1OT2qtmka/2RstTTHw=="}}};
+
+const $ = (id) => document.getElementById(id);
+const CODE_RE = /^NL-[A-HJ-NP-Z2-9]{4}(-[A-HJ-NP-Z2-9]{4}){3}$/;
+const b64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
+const hex = (u8) => Array.from(u8, (b) => b.toString(16).padStart(2, "0")).join("");
+
+function normalize(s) {
+  let t = s.toUpperCase().replace(/[^A-Z0-9]/g, "");
+  if (t.length === 16) t = "NL" + t;
+  if (t.length !== 18 || !t.startsWith("NL")) return t;
+  return "NL-" + t.slice(2).match(/.{4}/g).join("-");
+}
+
+// Returns null for an unknown code, otherwise { survey: "<url>" } (empty string when the dyad does not consent).
+async function lookup(code) {
+  const subtle = window.crypto && window.crypto.subtle;
+  if (!subtle) throw new Error("unsupported");
+  const base = await subtle.importKey("raw", new TextEncoder().encode(code), "PBKDF2", false, ["deriveBits"]);
+  const bits = new Uint8Array(await subtle.deriveBits(
+    { name: "PBKDF2", salt: b64(DATA.salt), iterations: DATA.iter, hash: "SHA-256" }, base, 512));
+  const entry = DATA.entries[hex(bits.slice(0, 16))];
+  if (!entry) return null;
+  const key = await subtle.importKey("raw", bits.slice(32, 64), "AES-GCM", false, ["decrypt"]);
+  const inner = JSON.parse(new TextDecoder().decode(
+    await subtle.decrypt({ name: "AES-GCM", iv: b64(entry.iv) }, key, b64(entry.ct))));
+  return { survey: /^https:\/\//.test(inner.q || "") ? inner.q : "" };
+}
+
+const HEAD = {
+  code: ["Post-experiment form", "You've finished the exercise. Type your team's access code to continue."],
+  survey: ["Post-experiment form", ""],
+  confirm: ["Confirm your submission", ""],
+  thanks: ["Thank you!", ""],
+};
+function show(step) {
+  for (const s of ["code", "survey", "confirm", "thanks"]) $("step-" + s).hidden = s !== step;
+  $("title").textContent = HEAD[step][0];
+  $("lede").textContent = HEAD[step][1];
+  $("lede").hidden = !HEAD[step][1];
+  window.scrollTo(0, 0);
+  $("title").focus({ preventScroll: true });
+}
+
+$("entry").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const code = normalize($("code").value);
+  $("err").textContent = "";
+  if (!code) { $("err").textContent = "Type your access code first."; return; }
+  if (!CODE_RE.test(code)) {
+    $("err").textContent = "That doesn't look like an access code. Codes look like NL-XXXX-XXXX-XXXX-XXXX.";
+    return;
+  }
+  const btn = $("go");
+  btn.disabled = true; btn.classList.add("busy"); btn.textContent = "Checking…";
+  try {
+    const r = await lookup(code);
+    if (r === null) {
+      $("err").textContent = "That code doesn't match any team. Check it with your partner and try again.";
+      return;
+    }
+    if (r.survey) {
+      $("survey-link").href = r.survey;
+      show("survey");
+      window.location.assign(r.survey);
+    } else {
+      show("confirm");
+    }
+  } catch (err) {
+    $("err").textContent = err && err.message === "unsupported"
+      ? "This browser can't check your code. Try an up-to-date Chrome, Safari, Edge or Firefox."
+      : "Something went wrong. Reload the page and try again.";
+  } finally {
+    btn.disabled = false; btn.classList.remove("busy"); btn.textContent = "Continue";
+  }
+});
+$("code").addEventListener("input", () => { $("err").textContent = ""; });
+$("confirm").addEventListener("click", () => show("thanks"));
+</script>
+</body>
+</html>
