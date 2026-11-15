@@ -544,7 +544,7 @@ section.content {
 }
 
 /* ============================================================
-   RESEARCH PAGE — particle figure in the centre, papers on
+   RESEARCH PAGE — moving network in the centre, papers on
    both sides (figure drawn by research.js)
    ============================================================ */
 /* blueprint grid: bright where the pointer is, faint elsewhere */
@@ -595,8 +595,7 @@ section.research-stage .section-title { text-align: center; position: relative; 
   background: radial-gradient(closest-side, rgba(79, 70, 229, 0.22), rgba(124, 58, 237, 0.08) 55%, transparent);
   filter: blur(20px);
 }
-#research-figure { position: absolute; inset: 0; opacity: 0; transition: opacity 1.4s ease; }
-#research-figure.is-ready { opacity: 1; }
+#research-figure { position: absolute; inset: 0; }
 
 .research-side { position: relative; z-index: 1; }
 .research-side .section-subtitle { margin-top: 0; }

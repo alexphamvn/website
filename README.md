@@ -15,7 +15,7 @@ A simple multi-page academic website. No build tools, no servers — just open t
 | `style.css` | All the design — colors, fonts, layout |
 | `fx.js` | The moving parts shared by every page — night sky, film grain, nav underline, headings, the research-questions curve, dot fields |
 | `badge.js` | The 3D lanyard badge on the home page |
-| `research.js` | The particle figure on the research page |
+| `research.js` | The moving network on the research page — point count, speed and colours are in `SETTINGS` at the top of the file |
 | `cv.pdf` | Your CV (you add this) |
 | `your-photo.jpg` | Your photo for the badge (you add this) |
 
