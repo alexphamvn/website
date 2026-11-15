@@ -473,22 +473,8 @@ section.hero-sky.has-badge .badge-col:has(.badge-touched) .badge-hint { opacity:
   font-size: 1.42rem;
   line-height: 1.22;
   letter-spacing: -0.012em;
-  margin-bottom: 1.1rem;
   text-wrap: balance;
 }
-.rq-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.rq-b .rq-tags { justify-content: flex-end; }
-.rq-tags span {
-  display: inline-block;
-  padding: 0.36rem 0.95rem;
-  border-radius: 999px;
-  color: #fff;
-  font-weight: 600;
-  font-size: 0.82rem;
-}
-.rq-tags-a span { background: linear-gradient(120deg, #4f46e5, #7c3aed); }
-.rq-tags-b span { background: linear-gradient(120deg, #ea580c, #f59e0b); }
-
 .rq-line { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
 .rq-line path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
 .rq-track { stroke: rgba(245, 246, 248, 0.16); stroke-width: 1.5; }

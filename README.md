@@ -42,7 +42,7 @@ Put your CV PDF in this folder and rename it `cv.pdf`. It will automatically sho
 In `research.html`, copy any `<div class="pub">...</div>` block, paste it into the section it belongs to, and edit the text. Each block is authors, title, then one line per journal / status / conference. To add a link chip under a paper, add `<div class="pub-links"><a class="pub-link" href="https://…">Manuscript</a></div>` inside the block.
 
 ### Edit the research questions (home page)
-In `index.html`, find `[EDIT: RESEARCH QUESTIONS]`. Change the two questions, the coloured tags and the two stage names ("Emergence", "Dominance") — the curve redraws itself to fit the text.
+In `index.html`, find `[EDIT: RESEARCH QUESTIONS]`. Change the two questions and the two stage names ("Emergence", "Dominance") — the curve redraws itself to fit the text.
 
 ### Edit courses and testimonials
 In `teaching.html`, each `.teaching-row` is one course. To add a testimonial, copy a `<div class="testimonial">` block — the dots under the carousel are created automatically.
