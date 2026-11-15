@@ -17,11 +17,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+<!-- the full weight range of Fraunces, plus its italics -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="style.css" />
+<!-- lets the CSS know the scripts are running (nav underline) -->
+<script>document.documentElement.classList.add("js")</script>
 </head>
-<body>
+<body class="teaching-page">
 
 <nav class="topnav">
+  <a href="index.html" class="brand"><span class="brand-box" aria-hidden="true"></span>Alex Pham</a>
   <a href="index.html">About</a>
   <a href="research.html">Research</a>
   <a href="teaching.html" class="active">Teaching</a>
@@ -29,7 +34,7 @@
   <a href="contact.html">Contact</a>
 </nav>
 
-<section class="content light">
+<section class="content">
   <h2 class="section-title">Teaching</h2>
   <h3 class="section-subtitle activities-title">Courses</h3>
   <!-- [EDIT: COURSE 1] -->
@@ -55,7 +60,7 @@
   <div class="teaching-row">
     <div class="teaching-date"></div>
     <div>
-      <div class="course-title">Media Products Selling</div>
+      <div class="course-title">Media Selling</div>
       <div class="course-meta">
         Gia Dinh University (Vietnam)<br />
         Instructor — Undergraduate
@@ -74,7 +79,7 @@
       SUMMER
     </div>
     <div>
-      <div class="course-title">Media Channel Development And Management</div>
+      <div class="course-title">Platform Management</div>
       <div class="course-meta">
         Gia Dinh University (Vietnam)<br />
         Instructor — Undergraduate
@@ -88,12 +93,11 @@
 
   <!-- ===== [EDIT: TESTIMONIALS — Carousel] =====
        To add a testimonial: copy a <div class="testimonial">...</div>
-       block inside .testimonial-track and add it. Then add ONE more
-       <button class="dot"></button> inside .testimonial-dots so the
-       dot count matches the testimonial count.
+       block inside .testimonial-track and add it. The dots underneath
+       are created automatically, one per testimonial.
   -->
-  <div class="testimonials">
-    <div class="quote-mark">"</div>
+  <div class="testimonials glass">
+    <div class="quote-mark" aria-hidden="true">&ldquo;</div>
 
     <div class="testimonial-carousel">
       <button class="carousel-arrow prev" aria-label="Previous testimonial">‹</button>
@@ -109,7 +113,7 @@
             <div class="testimonial-source">
               Na Nguyen
               <em>(Undergraduate student)</em>
-              <strong>Media Channel Development And Management (Summer 2024)</strong>
+              <strong>Platform Management (Summer 2024)</strong>
             </div>
           </div>
 
@@ -129,7 +133,7 @@
             <div class="testimonial-source">
               Trinh Tran
               <em>(Undergraduate student)</em>
-              <strong>Media Products Selling (Spring 2025))</strong>
+              <strong>Media Selling (Spring 2025)</strong>
             </div>
           </div>
 
@@ -139,46 +143,80 @@
       <button class="carousel-arrow next" aria-label="Next testimonial">›</button>
     </div>
 
-    <div class="testimonial-dots">
-      <button class="dot active" aria-label="Go to testimonial 1"></button>
-      <button class="dot" aria-label="Go to testimonial 2"></button>
-      <button class="dot" aria-label="Go to testimonial 3"></button>
-    </div>
+    <div class="testimonial-dots"></div>
   </div>
 </section>
 <footer>
   <p>© Alex Pham · <a href="mailto:me@alexhoanganpham.com">me@alexhoanganpham.com</a></p>
 </footer>
 
-<!-- ===== Carousel script — no need to edit this ===== -->
+<!-- ===== Carousel script — no need to edit this =====
+     Arrows, dots, swipe and the left/right keys all work.
+     It moves on by itself every SLIDE_TIME milliseconds and
+     waits while the pointer is over it. Set SLIDE_TIME to 0
+     to switch the automatic movement off.                    -->
 <script>
 (function() {
-  const track = document.querySelector('.testimonial-track');
-  const slides = document.querySelectorAll('.testimonial-track .testimonial');
-  const dots = document.querySelectorAll('.testimonial-dots .dot');
-  const prevBtn = document.querySelector('.carousel-arrow.prev');
-  const nextBtn = document.querySelector('.carousel-arrow.next');
-  let current = 0;
+  const SLIDE_TIME = 7000;
+  const box = document.querySelector('.testimonials');
+  if (!box) return;
+  const track = box.querySelector('.testimonial-track');
+  const slides = Array.from(track.querySelectorAll('.testimonial'));
+  const dotBox = box.querySelector('.testimonial-dots');
+  const viewport = box.querySelector('.testimonial-viewport');
+  let current = 0, timer = null;
+
+  box.style.setProperty('--slide-time', (SLIDE_TIME || 7000) + 'ms');
+  const dots = slides.map((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'dot';
+    d.setAttribute('aria-label', 'Go to testimonial ' + (i + 1));
+    d.addEventListener('click', () => goTo(i));
+    dotBox.appendChild(d);
+    return d;
+  });
 
   function goTo(index) {
-    if (index < 0) index = slides.length - 1;
-    if (index >= slides.length) index = 0;
-    current = index;
+    current = (index + slides.length) % slides.length;
     track.style.transform = 'translateX(-' + (current * 100) + '%)';
-    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    slides.forEach((s, i) => s.classList.toggle('is-current', i === current));
+    dots.forEach((d, i) => {
+      d.classList.remove('active');
+      if (i === current) { void d.offsetWidth; d.classList.add('active'); }   // restart the fill
+    });
+    restart();
   }
+  function restart() {
+    clearTimeout(timer);
+    if (SLIDE_TIME && !box.classList.contains('is-paused')) timer = setTimeout(() => goTo(current + 1), SLIDE_TIME);
+  }
+  function pause(on) { box.classList.toggle('is-paused', on); if (on) clearTimeout(timer); else goTo(current); }
 
-  prevBtn.addEventListener('click', () => goTo(current - 1));
-  nextBtn.addEventListener('click', () => goTo(current + 1));
-  dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+  box.querySelector('.carousel-arrow.prev').addEventListener('click', () => goTo(current - 1));
+  box.querySelector('.carousel-arrow.next').addEventListener('click', () => goTo(current + 1));
+  box.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') pause(true); });
+  box.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') pause(false); });
+  box.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') goTo(current - 1);
+    if (e.key === 'ArrowRight') goTo(current + 1);
+  });
 
-  // Auto-advance every 7 seconds.
-  // To disable, delete the 3 lines below.
-  setInterval(() => {
-    goTo(current + 1);
-  }, 7000);
+  // swipe
+  let startX = null;
+  viewport.addEventListener('pointerdown', e => { startX = e.clientX; });
+  viewport.addEventListener('pointerup', e => {
+    if (startX === null) return;
+    const dx = e.clientX - startX; startX = null;
+    if (Math.abs(dx) > 40) goTo(current + (dx < 0 ? 1 : -1));
+  });
+  viewport.addEventListener('pointercancel', () => { startX = null; });
+
+  goTo(0);
 })();
 </script>
+
+<!-- ===== Shared effects: textures, motion, sky, dots (see fx.js) ===== -->
+<script src="fx.js" defer></script>
 
 </body>
 </html>

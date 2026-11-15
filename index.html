@@ -13,13 +13,16 @@
   - Replace text inside [EDIT: ...] sections with your info
   - All colors, fonts, and styles live in style.css
   - The navigation bar appears on EVERY page — if you add or
-    rename a link, do it in all 6 HTML files
+    rename a link, do it in all 5 HTML files
+  - The moving parts (sky, grain, card tilt…) live in fx.js
   ============================================================
 -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+<!-- the full weight range of Fraunces, plus its italics -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="style.css" />
 <!-- lets the CSS hide the old name box before the page draws (no flash) -->
 <script>document.documentElement.classList.add("js")</script>
@@ -28,6 +31,7 @@
 
 <!-- ===== Navigation (same on every page) ===== -->
 <nav class="topnav">
+  <a href="index.html" class="brand"><span class="brand-box" aria-hidden="true"></span>Alex Pham</a>
   <a href="index.html" class="active">About</a>
   <a href="research.html">Research</a>
   <a href="teaching.html">Teaching</a>
@@ -38,8 +42,8 @@
 <!-- ============================================================
      [EDIT: HERO / ABOUT]
      Left: interactive 3D badge.  Right: your introduction.
-     The starry sky behind the whole page is drawn by the
-     "starfield" script at the bottom of this file.
+     The night sky behind the whole page is drawn on the
+     "starfield" canvas by fx.js.
      ============================================================ -->
 <canvas id="starfield" aria-hidden="true"></canvas>
 
@@ -47,7 +51,7 @@
   <div class="badge-col">
     <!-- ============================================================
          [EDIT: NAME BOX] — Isometric open-bracket frame
-         Change "Your Name" and the subtitle below.
+         Change the name below (the 3D badge reads it from here).
          The SVG draws the 3D bracket shape — you usually don't
          need to touch it.
          ============================================================ -->
@@ -77,51 +81,56 @@
       </svg>
       <div class="iso-name-text">
         <h1>Alex Pham</h1>
-        <div class="subtitle">What is inside the "black box"?</div>
       </div>
     </div>
 
     <!-- ============================================================
          [EDIT: 3D BADGE] — interactive lanyard badge (badge.js)
-         Name + slogan come from the name box above.
-         Everything else on the card is set right here (top → bottom):
+         The name comes from the name box above.
+         Everything else on the card is set right here:
+           data-role    → the words running up the coloured strip
            data-photo   → photo
-           data-role    → title under your name
-           data-former  → line under the title
-           data-org     → university
-           data-school  → school
-           data-center  → centre
-           data-site    → website at the bottom
+           data-former  → job title under your name; put a | where
+                          a new line should start
          If 3D isn't supported, the classic name box shows instead.
          ============================================================ -->
     <div id="badge-3d"
          data-photo="your-photo.jpg"
-         data-role="Management Researcher"
-         data-former="Former Media Content Acquisition Strategist"
-         data-org="Binghamton University"
-         data-school="School of Management"
-         data-center="Bernard M. and Ruth R. Bass Center for Leadership Studies"
-         data-site="alexhoanganpham.com"
+         data-role="Organizational research"
+         data-former="Doctoral student | Former Media Acquisition Strategist"
          aria-hidden="true"></div>
     <p class="badge-hint" aria-hidden="true">Grab the badge &amp; give it a fling</p>
   </div>
 
     <div class="hero-bio">
       <p>
-      I am interested in learning about organizational innovation, particularly at the successor and precursor stages of it, in relation to resources. The topics stems from my working experience in both academia and industry. 
+      I am interested in learning about organizational innovation, particularly how human capital evolves across the technology life cycle, from a technology’s emergence to its dominance. The topic stems from my work experience in both academia and industry.
       </p>
       <p>
        At the initial stages of new technology emergence, I seek to understand how innovation processes unfold within organizations in terms of how resources are leveraged or created for technology creation and innovation. During my time in the biochemistry lab, I observed how researchers often rely on established processes to identify new natural compounds. Later, as a content acquisition and distribution strategist, I saw the escalation of new media technologies and formats. Together, the experience made me curious about how invention and innovation happen at early stages (e.g., How people come up with novelty in routinized settings). 
       </p>
       <p>
-      This also brought up a question of what happen if new invention is exploited at scale: How does that influence the labor market or firms? Therefore, at the successor stages, I want to study what from the human capital side make a firm's success or failure in technology change and how the labor evolve along with technolgy. 
+      This also brought up a question of what happen if new invention is exploited at scale: How does that influence the labor market or firms? Therefore, at the successor stages, I want to study what from the human capital side make a firm's success or failure in technology change and how the labor evolve along with technology. 
       </p>
 
-      <!-- ===== Research questions (layout from Presentation4) ===== -->
-      <div class="rq-grid">
+      <!-- ============================================================
+           [EDIT: RESEARCH QUESTIONS]
+           Two questions on a technology life-cycle curve. A marker
+           rides the curve (it follows the pointer, or the scroll on
+           a phone) and the question it has reached comes into focus:
+             · at Emergence the circles pop out one after another
+             · at Dominance the circle turns into another shape
+           Edit the questions, the coloured tags and the two stage
+           names freely — fx.js redraws the curve to fit the text.
+           ============================================================ -->
+      <div class="rq-curve">
+        <svg class="rq-line" aria-hidden="true"></svg>
+        <span class="rq-probe" aria-hidden="true"></span>
+        <span class="rq-stage rq-stage-a">Emergence</span>
+        <span class="rq-stage rq-stage-b">Dominance</span>
 
-        <div class="rq-card">
-          <div class="rq-icon icon-bubbles" aria-hidden="true">
+        <div class="rq rq-a">
+          <div class="rq-icon icon-emerge" aria-hidden="true">
             <span class="b b1"></span>
             <span class="b b2"></span>
             <span class="b b3"></span>
@@ -129,21 +138,18 @@
             <span class="b b5"></span>
             <span class="b b6"></span>
             <span class="b b7"></span>
-            <span class="b b8"></span>
           </div>
-          <h2 class="rq-question">How do resources make organzational innovation and technology changes?</h2>
+          <h2 class="rq-question">How do resources make organizational innovation and technology changes?</h2>
           <div class="rq-tags rq-tags-a">
             <span>Existing resources</span>
             <span>New resources</span>
           </div>
         </div>
 
-        <div class="rq-card">
-          <div class="rq-icon icon-waves" aria-hidden="true">
-            <span class="w w1"></span>
-            <span class="w w2"></span>
-            <span class="w w3"></span>
-            <span class="w-dot"></span>
+        <div class="rq rq-b">
+          <div class="rq-icon icon-morph" aria-hidden="true">
+            <span class="ghost"></span>
+            <span class="shape"></span>
           </div>
           <h2 class="rq-question">How do firm survive and human capital evolve in technology changes?</h2>
           <div class="rq-tags rq-tags-b">
@@ -151,7 +157,6 @@
             <span>Labor's evolution</span>
           </div>
         </div>
-
       </div>
 
       <p>
@@ -167,66 +172,13 @@
   <p>© Alex Pham · <a href="mailto:me@alexhoanganpham.com">me@alexhoanganpham.com</a></p>
 </footer>
 
+<!-- ===== Shared effects: textures, motion, sky, dots (see fx.js) ===== -->
+<script src="fx.js" defer></script>
+
 <!-- ===== Interactive 3D badge (React Three Fiber + Rapier) ===== -->
 <script src="badge.js" defer></script>
 
-<!-- ===== Starry-night animation for the name/slogan banner ===== -->
-<script>
-(function () {
-  const canvas = document.getElementById('starfield');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let stars = [], W = 0, H = 0;
 
-  function resize() {
-    W = canvas.width = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
-    build();
-  }
-
-  function build() {
-    stars = [];
-    const count = Math.floor((W * H) / 1800);
-    for (let i = 0; i < count; i++) {
-      stars.push({
-        x: Math.random() * W,
-        y: Math.random() * H,
-        r: Math.random() < 0.92 ? Math.random() * 1.1 + 0.3 : Math.random() * 1.6 + 1.2, // a few bigger stars
-        base: Math.random() * 0.6 + 0.35,          // base brightness
-        tw: Math.random() * Math.PI * 2,           // twinkle phase
-        ts: Math.random() * 0.035 + 0.008,         // twinkle speed
-        vx: (Math.random() - 0.5) * 0.08,          // slow drift
-        vy: (Math.random() - 0.5) * 0.05,
-        blue: Math.random() < 0.25                 // some cool-blue stars
-      });
-    }
-  }
-
-  function frame() {
-    ctx.clearRect(0, 0, W, H);
-    for (const s of stars) {
-      s.tw += s.ts;
-      s.x += s.vx; s.y += s.vy;
-      if (s.x < 0) s.x = W; if (s.x > W) s.x = 0;
-      if (s.y < 0) s.y = H; if (s.y > H) s.y = 0;
-      const a = s.base * (0.35 + 0.65 * (0.5 + 0.5 * Math.sin(s.tw)));
-      ctx.beginPath();
-      ctx.fillStyle = s.blue
-        ? 'rgba(160,190,255,' + a.toFixed(3) + ')'
-        : 'rgba(245,246,248,' + a.toFixed(3) + ')';
-      if (s.r > 1.2) { ctx.shadowBlur = 6; ctx.shadowColor = 'rgba(180,200,255,0.8)'; }
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.shadowBlur = 0;
-    }
-    requestAnimationFrame(frame);
-  }
-
-  window.addEventListener('resize', resize);
-  resize();
-  frame();
-})();
-</script>
 
 </body>
 </html>

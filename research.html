@@ -9,20 +9,30 @@
 ============================================================
   RESEARCH PAGE  (research.html)
   ============================================================
-  Each <div class="pub"> is one paper.
-  To add a paper: copy a whole block, paste below, edit text,
-  and update the number in <div class="pub-num">.
+  Each <div class="pub"> is one paper, written top to bottom as:
+    pub-authors  → authors (your own name goes in <strong>)
+    pub-title    → title
+    pub-status   → journal / status / conference (one line each;
+                   repeat the line for a second venue)
+    pub-links    → optional row of link chips, e.g.
+                   <div class="pub-links"><a class="pub-link" href="https://…">Manuscript</a></div>
+  To add a paper: copy a whole block, paste it, edit the text.
   ============================================================
 -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+<!-- the full weight range of Fraunces, plus its italics -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="style.css" />
+<!-- lets the CSS know the scripts are running (nav underline) -->
+<script>document.documentElement.classList.add("js")</script>
 </head>
 <body class="research-page">
 
 <nav class="topnav">
+  <a href="index.html" class="brand"><span class="brand-box" aria-hidden="true"></span>Alex Pham</a>
   <a href="index.html">About</a>
   <a href="research.html" class="active">Research</a>
   <a href="teaching.html">Teaching</a>
@@ -31,11 +41,12 @@
 </nav>
 <!-- ============================================================
      [EDIT: RESEARCH LAYOUT]
-     Left column  : Publications + Conferences
+     Left column  : Peer-Reviewed Publications + Under Review
      Centre       : animated particle figure (research.js)
-     Right column : Works in Progress
-     To move a paper to the other side, cut its whole
-     <div class="pub"> block and paste it into the other column.
+     Right column : Work in Progress + Conference Presentations
+     To move a section to the other side, cut its whole
+     <div class="pub-section"> block and paste it into the other
+     column.
      ============================================================ -->
 <section class="research-stage">
   <h2 class="section-title">What do I study?</h2>
@@ -44,63 +55,39 @@
 
     <!-- ===== LEFT SIDE ===== -->
     <div class="research-side research-left">
-    <!-- ===== Publication ===== -->
-      <h3 class="section-subtitle">Publications</h3>
-      <div class="pub-list">
+
+      <!-- ===== Peer-reviewed publications ===== -->
+      <div class="pub-section">
+        <h3 class="section-subtitle">Peer-Reviewed Publications</h3>
 
         <!-- [EDIT: PAPER] -->
         <div class="pub">
-          <div class="pub-num">[1]</div>
-          <div>
-            <div class="pub-title">Undivided attention: Boards of directors and their disparate committee meetings.</div>
-            <div class="pub-authors">with Havrylyshyn, A., Xiao, J. J.</div>
-            <div class="pub-status"><em>Forthcoming, International Journal of Corporate Governance</em>.</div>
+          <div class="pub-authors">Havrylyshyn, A., Xiao, J. J., &amp; <strong>Pham, A. H. A.</strong> (Forthcoming)</div>
+          <div class="pub-title">Undivided attention: Boards of directors and their disparate committee meetings.</div>
+          <div class="pub-status">International Journal of Corporate Governance</div>
+          <div class="pub-links">
+            <a class="pub-link" href="https://www.inderscience.com/info/ingeneral/forthcoming.php?jcode=ijcg" target="_blank" rel="noopener">DOI: 10.1504/IJCG.2026.10081930</a>
           </div>
         </div>
-
       </div>
 
-
-
-    <!-- ===== Conferences ===== -->
-      <h3 class="section-subtitle">Conferences & Presentations</h3>
-      <div class="pub-list">
+      <!-- ===== Under review ===== -->
+      <div class="pub-section">
+        <h3 class="section-subtitle">Under Review</h3>
 
         <!-- [EDIT: PAPER] -->
         <div class="pub">
-          <div class="pub-num">[2]</div>
-          <div>
-            <div class="pub-title">Influential Teams: Characteristics That Make Successful Upward Influence*.</div>
-            <div class="pub-status"><em>Academy of Management Annual Meeting (2026)</em>.</div>
-          </div>
-        </div>
-        <!-- [EDIT: PAPER] -->
-        <div class="pub">
-          <div class="pub-num">[3]</div>
-          <div>
-            <div class="pub-title">The Multi-Level Architecture of Team Influence: Interweaving Human Capital, Organizational Attention, and Temporal Dynamics*.</div>
-            <div class="pub-status"><em>The Conference on Complex Systems (CCS 2026).</em>.</div>
-          </div>
-        </div>
-        <!-- [EDIT: PAPER] -->
-        <div class="pub">
-          <div class="pub-num">[4]</div>
-          <div>
-            <div class="pub-title">Glochidion littorale Blume: A new candidate for controlling Burkholderia pseudomallei infections.</div>
-            <div class="pub-authors">with Diep, T. T. & Huynh, T. T. T.</div>
-            <div class="pub-status"><em>European Melioidosis Congress, Oxford, England (2017).</em>.</div>
-          </div>
-        </div>
-        <!-- [EDIT: PAPER] -->
-        <div class="pub">
-          <div class="pub-num">[5]</div>
-          <div>
-            <div class="pub-title">Gender Differences in the Effects of Social Media on Art Space Visits*.</div>
-            <div class="pub-status"><em>8th International Conference on Applied Economics and Business (2024)</em>.</div>
-          </div>
+          <div class="pub-authors"><strong>Pham, A. H. A.</strong>, Sun, Y., &amp; Somaraju, A.</div>
+          <div class="pub-title">Hierarchical Sequence and Duration of Capability Building: Evidence from Co-Changes in Technology Skill Requirements.</div>
+          <div class="pub-status">Under review at Strategic Management Journal</div>
         </div>
 
-
+        <!-- [EDIT: PAPER] -->
+        <div class="pub">
+          <div class="pub-authors">Bowker, J., Sun, Y., Somaraju, A., &amp; <strong>Pham, A. H. A.</strong></div>
+          <div class="pub-title">The Making of a Leader: Relational Processes and Racial Disparities in Leadership Development.</div>
+          <div class="pub-status">Under review at The Leadership Quarterly special issue: Grounded in Causality: Elevating Evidence for Leadership Practice</div>
+        </div>
       </div>
     </div>
 
@@ -111,128 +98,74 @@
 
     <!-- ===== RIGHT SIDE ===== -->
     <div class="research-side research-right">
-    
-      <h3 class="section-subtitle">Lead-authored Works in Progress</h3>
-      <div class="pub-list">  
-          <!-- [EDIT: PAPER] -->
-        <div class="pub">
-          <div class="pub-num">[6]</div>
-          <div>
-            <div class="pub-title">Long-term attention on technology development: The activation of firm’s confirmation view and social-bias on aspiration-response*.</div>
-            <div class="pub-status"><em>PhD First-Year Paper, manuscript available.</em></div>
-          </div>
-        </div>
-                <!-- [EDIT: PAPER] -->
 
-        <div class="pub">
-          <div class="pub-num">[7]</div>
-          <div>
-            <div class="pub-title">Human capital divergence and convergence at the ecosystem’ s upstream and downstream *.</div> 
-            <div class="pub-authors">with Zhou E.</div>
-            <div class="pub-status"><em>Data analysis.</em></div>
-          </div>
-        </div>
+      <!-- ===== Work in progress ===== -->
+      <div class="pub-section">
+        <h3 class="section-subtitle">Work in Progress</h3>
+
         <!-- [EDIT: PAPER] -->
         <div class="pub">
-          <div class="pub-num">[8]</div>
-          <div>
-            <div class="pub-title">Same same but different: The strategy of modification and interpolation under technological trends *.</div>
-            <div class="pub-authors">with Basbug, G.</div>
-            <div class="pub-status"><em>Data analysis.</em></div>
-          </div>
+          <div class="pub-authors"><strong>Pham, A. H. A.</strong></div>
+          <div class="pub-title">Skill-Level Responses to Performance Feedback: Firms’ Socially Inclined Search and Retention Under the Stable Attention to Technology Development</div>
+          <div class="pub-status">Submitted to the 2027 George Washington - Organization &amp; Management Theory PDW</div>
         </div>
-       <!-- [EDIT: PAPER] -->
-        <div class="pub">
-          <div class="pub-num">[9]</div>
-          <div>
-            <div class="pub-title">Heads or Hands First? Hiring sequence for adaptation*.</div>
-            <div class="pub-authors">with Sun, Y & Somaraju A.</div>
-            <div class="pub-status"><em>Manuscript Finalizing, submitting to AOM 2027.</em></div>
-          </div>
-        </div>
-         <!-- ===== Conferences ===== -->
-      <h3 class="section-subtitle">Co-authored/Assistant Works in Progress</h3>
-      <div class="pub-list">
+
         <!-- [EDIT: PAPER] -->
         <div class="pub">
-          <div class="pub-num">[10]</div>
-          <div>
-            <div class="pub-title">Night Science - Where Innovation Emerges in High-Paradigm Fields.</div>
-            <div class="pub-authors">with Eckardt, R., Dunne, D., and Kojaku, S.</div>
-            <div class="pub-status"><em>Data analysis (Qualitative).</em></div>
-          </div>
+          <div class="pub-authors"><strong>Pham, A. H. A.</strong> &amp; Basbug, G.</div>
+          <div class="pub-title">The Hiring Modification And Interpolation Strategy Under Technological Trends: Evidence from HR Jobs</div>
+          <div class="pub-status">Manuscript in preparation</div>
         </div>
+
         <!-- [EDIT: PAPER] -->
         <div class="pub">
-          <div class="pub-num">[11]</div>
-          <div>
-            <div class="pub-title">The Making of a Leader: Relational Processes and Racial Disparities in Leadership Development.</div>
-            <div class="pub-authors">with Bowker J., Sun Y., & Somaraju A.</div>
-            <div class="pub-status"><em>Submitting to The Leadership Quarterly special issue: Grounded in Causality: Elevating Evidence for Leadership Practice.</em></div>
-          </div>
+          <div class="pub-authors"><strong>Pham, A. H. A.</strong> &amp; Zhou, E. J.</div>
+          <div class="pub-title">Do AI Coding Agents Reduce Share of Hiring at Entry Level: Drawing a Causal Inference</div>
+          <div class="pub-status">Data in analysis</div>
+        </div>
+
+        <!-- [EDIT: PAPER] -->
+        <div class="pub">
+          <div class="pub-authors">Eckardt, R., Dunne, D., Kojaku, S., &amp; <strong>Pham, A. H. A.</strong></div>
+          <div class="pub-title">Night Science and How Innovation Emerges In Science</div>
+          <div class="pub-status">Data in analysis</div>
+        </div>
+      </div>
+
+      <!-- ===== Conference presentations ===== -->
+      <div class="pub-section">
+        <h3 class="section-subtitle">Conference Presentations</h3>
+
+        <!-- [EDIT: PAPER] -->
+        <div class="pub">
+          <div class="pub-authors"><strong>Pham, A. H. A.</strong> (2026)</div>
+          <div class="pub-title">The Multi-Level Architecture of Team Influence: Interweaving Personal Agency, Organizational Context, and Temporal Dynamics.</div>
+          <div class="pub-status">2026 Academy of Management Annual Meeting, Philadelphia, PA, United States.</div>
+          <div class="pub-status">2026 Conference on Complex Systems, Binghamton, NY, United States.</div>
+        </div>
+
+        <!-- [EDIT: PAPER] -->
+        <div class="pub">
+          <div class="pub-authors">Diep, T. T., <strong>Pham, A. H. A.</strong>, &amp; Huynh, T. T. T. (2018)</div>
+          <div class="pub-title"><i>Glochidion littorale</i> Blume: A New Candidate for Controlling <i>Burkholderia pseudomallei</i> Infections.</div>
+          <div class="pub-status">European Melioidosis Congress, Oxford, England.</div>
         </div>
       </div>
     </div>
 
   </div>
-
-  <p class="footnote">* Denotes First Author/Presenter</p>
 </section>
 
 <footer>
   <p>© Alex Pham · <a href="mailto:me@alexhoanganpham.com">me@alexhoanganpham.com</a></p>
 </footer>
 
+<!-- ===== Shared effects: textures, motion, sky, dots (see fx.js) ===== -->
+<script src="fx.js" defer></script>
+
 <!-- ===== Animated particle figure (React Three Fiber) ===== -->
 <script src="research.js" defer></script>
 
-<script>
-  (function() {
-    const methods = [
-      "Polynomial Regression", "Text Embeddings", "Hierarchical Linear Modeling",
-      "Simulation", "Structural Equation Modeling", "Grounded Theory",
-      "Computational Modeling", "Fixed-effect Regression", "Ordinary Least Squares",
-      "Confirmatory Factor Analysis", "Exploratory Factor Analysis", "t-test"
-    ];
 
-    const track = document.getElementById('credit-track');
-    if (!track) return;
-
-    // 1. Populate the track with the words
-    methods.forEach(method => {
-      const div = document.createElement('div');
-      div.className = 'credit-item';
-      div.innerText = method;
-      track.appendChild(div);
-    });
-
-    // 2. Set the initial middle item as active (index 1 is the middle of the 3 visible slots)
-    if (track.children.length > 1) {
-      track.children[1].classList.add('active');
-    }
-
-    // 3. The continuous rolling function
-    function rotateCredits() {
-      track.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
-      track.style.transform = `translateY(-40px)`;
-      
-      // Shift the active highlight to the new middle item (which is entering at index 2)
-      Array.from(track.children).forEach(item => item.classList.remove('active'));
-      if (track.children[2]) {
-        track.children[2].classList.add('active');
-      }
-
-      // Once the slide animation finishes, invisibly move the top item to the bottom of the list to loop it
-      setTimeout(() => {
-        track.style.transition = 'none';
-        track.appendChild(track.firstElementChild);
-        track.style.transform = `translateY(0)`;
-      }, 600); // 600ms matches the CSS transition time
-    }
-
-    // Run the rotate function every 2 seconds
-    setInterval(rotateCredits, 1000);
-  })();
-</script>
 </body>
 </html>

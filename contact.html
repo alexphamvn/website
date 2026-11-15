@@ -16,11 +16,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+<!-- the full weight range of Fraunces, plus its italics -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="style.css" />
+<!-- lets the CSS know the scripts are running (nav underline) -->
+<script>document.documentElement.classList.add("js")</script>
 </head>
-<body>
+<body class="contact-page">
 
 <nav class="topnav">
+  <a href="index.html" class="brand"><span class="brand-box" aria-hidden="true"></span>Alex Pham</a>
   <a href="index.html">About</a>
   <a href="research.html">Research</a>
   <a href="teaching.html">Teaching</a>
@@ -28,26 +33,37 @@
   <a href="contact.html" class="active">Contact</a>
 </nav>
 
-<section class="content light">
+<section class="content">
   <h2 class="section-title">Get in touch</h2>
 
-  <div class="contact-card">
-    <h3>Alex (Hoang-An) Pham</h3>
-    <p>
-      Bernard M. and Ruth R. Bass Center for Leadership Studies<br />
-      School of Management<br />
-      Binghamton University<br /><br />
-      <br />
-      4400 Vestal Pkwy E, Binghamton, NY 13902<br />
-      AA 307
-    </p>
-    <a href="mailto:hpham7@binghamton.edu">me@alexhoanganpham.com</a>
+  <!-- [EDIT: CONTACT CARD] the email appears three times below — change all three -->
+  <div class="contact-wrap">
+    <div class="contact-card foil" data-tilt="10">
+      <h3>Alex (Hoang-An) Pham</h3>
+      <p>
+        Bernard M. and Ruth R. Bass Center for Leadership Studies<br />
+        School of Management<br />
+        Binghamton University
+      </p>
+      <p class="contact-place">
+        4400 Vestal Pkwy E, Binghamton, NY 13902<br />
+        AA 307
+      </p>
+      <a class="contact-email" href="mailto:me@alexhoanganpham.com">me@alexhoanganpham.com</a>
+      <div class="contact-actions">
+        <button type="button" class="btn" data-copy="me@alexhoanganpham.com">Copy email</button>
+        <a class="btn btn-solid" href="mailto:me@alexhoanganpham.com">Write to me</a>
+      </div>
+    </div>
   </div>
 </section>
 
 <footer>
   <p>© Alex Pham · <a href="mailto:me@alexhoanganpham.com">me@alexhoanganpham.com</a></p>
 </footer>
+
+<!-- ===== Shared effects: textures, motion, sky, dots (see fx.js) ===== -->
+<script src="fx.js" defer></script>
 
 </body>
 </html>

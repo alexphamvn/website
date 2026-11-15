@@ -13,6 +13,11 @@ A simple multi-page academic website. No build tools, no servers — just open t
 | `cv.html` | Embedded CV (PDF) viewer |
 | `contact.html` | Contact info |
 | `style.css` | All the design — colors, fonts, layout |
+| `fx.js` | The moving parts shared by every page — night sky, film grain, nav underline, headings, the research-questions curve, dot fields |
+| `badge.js` | The 3D lanyard badge on the home page |
+| `research.js` | The particle figure on the research page |
+| `cv.pdf` | Your CV (you add this) |
+| `your-photo.jpg` | Your photo for the badge (you add this) |
 
 ## How to view it
 
@@ -28,23 +33,25 @@ Double-click `index.html`. It opens in your browser. Click the nav links at the 
 ## Common edits
 
 ### Add your photo
-In `index.html`, find the gray `[ Your photo goes here ]` box and replace it with:
-```html
-<img src="your-photo.jpg" alt="Your name" class="hero-photo" style="object-fit:cover;" />
-```
-Then put `your-photo.jpg` in the same folder.
+Put a portrait photo named `your-photo.jpg` in this folder. It appears on the badge on the home page. To use a different file name, change `data-photo` on `<div id="badge-3d">` in `index.html`.
 
 ### Embed your CV
 Put your CV PDF in this folder and rename it `cv.pdf`. It will automatically show up on the CV page.
 
 ### Add a new publication
-In `research.html`, copy any `<div class="pub">...</div>` block, paste it below the others, and edit the text. Update the `[1]`, `[2]` numbers.
+In `research.html`, copy any `<div class="pub">...</div>` block, paste it into the section it belongs to, and edit the text. Each block is authors, title, then one line per journal / status / conference. To add a link chip under a paper, add `<div class="pub-links"><a class="pub-link" href="https://…">Manuscript</a></div>` inside the block.
+
+### Edit the research questions (home page)
+In `index.html`, find `[EDIT: RESEARCH QUESTIONS]`. Change the two questions, the coloured tags and the two stage names ("Emergence", "Dominance") — the curve redraws itself to fit the text.
+
+### Edit courses and testimonials
+In `teaching.html`, each `.teaching-row` is one course. To add a testimonial, copy a `<div class="testimonial">` block — the dots under the carousel are created automatically.
 
 ### Change colors site-wide
 Open `style.css` and edit the values at the very top (under `:root`). Change one variable there and it updates every page.
 
 ### Change the navigation menu
-The nav bar appears on every page. If you add or rename a link, you'll need to update it in all 6 HTML files (it's the `<nav class="topnav">` block near the top of each).
+The nav bar appears on every page. If you add or rename a link, you'll need to update it in all the HTML files (it's the `<nav class="topnav">` block near the top of each).
 
 ## Putting it online (optional)
 
@@ -54,9 +61,12 @@ When you're ready to publish:
 - **University server:** ask your IT department for hosting space (usually free for students)
 
 ### The 3D lanyard badge (home page)
-The home page has a starry sky behind the whole page, with an interactive ID badge on a lanyard on the left and your introduction on the right — visitors can grab it, drag it and fling it. It's built with React Three Fiber + Rapier physics and lives in **`badge.js`** (already built, nothing to install).
+The home page has a night sky behind the whole page, with an interactive ID badge on a lanyard on the left and your introduction on the right — visitors can grab it, drag it and fling it. It's built with React Three Fiber + Rapier physics and lives in **`badge.js`** (already built, nothing to install).
 
-- **Change the text on the card:** edit the name / slogan in the `[EDIT: NAME BOX]` section; the role, photo, university, department and website are the `data-role`, `data-photo`, `data-org`, `data-dept` and `data-site` attributes on `<div id="badge-3d">`.
+- **Change the text on the card:** the name comes from the `[EDIT: NAME BOX]` section in `index.html`. The rest is set by attributes on `<div id="badge-3d">`: `data-role` is the wording running up the coloured strip, `data-former` is the job title under your name (put a `|` where a new line should start), and `data-photo` is the photo.
 - **Fallback:** if a browser can't do 3D, the original name box shows instead.
 - **Opening the file straight from your computer** (double-click) works, but browsers block the photo there, so the card shows your initials. On the live site the photo appears.
-- **Changing the design itself:** the source is in `badge-src/`. With Node.js installed, run `npm install` then `npm run build` inside that folder to regenerate `badge.js`.
+- **Changing the design itself:** the card faces (strip, layout, colours) were last changed directly in `badge.js`, so the source in `badge-src/` is behind. Rebuilding from `badge-src/` as it stands would bring back the old card design — update the source first.
+
+### Motion and textures
+Everything that moves outside the badge and the research figure lives in `fx.js`, in numbered blocks (sky, grain, nav underline, headings, curve, dots…). Each block is independent, so one can be deleted without breaking the others. Visitors whose device asks for reduced motion get a still version automatically.
